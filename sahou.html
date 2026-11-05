@@ -1,0 +1,791 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>表千家の稽古室｜花月と濃茶の流れ</title>
+<style>
+:root{--ink:#253c33;--muted:#69736b;--bg:#f3f1e9;--paper:#fffdf7;--line:#dedfd3;--green:#264b3d;--greenlight:#e8eee6;--ochre:#9a733b;--amber:#84571d;--amberbg:#faf0d9;--shadow:0 12px 35px #293b2b09;--serif:"Noto Serif CJK JP","Yu Mincho","Hiragino Mincho ProN",serif;--sans:"Hiragino Kaku Gothic ProN","Noto Sans CJK JP","Yu Gothic",system-ui,sans-serif}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.65}
+button,input,select,textarea{font:inherit}button,select{cursor:pointer}button{color:inherit;border:1px solid var(--line);background:var(--paper);border-radius:8px;padding:9px 14px;min-height:42px;transition:background .16s,border-color .16s,transform .16s}button:hover:not(:disabled){background:#ecefe5;border-color:#9fae9f}button:active:not(:disabled){transform:translateY(1px)}button:disabled{opacity:.38;cursor:not-allowed}button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid #b58b4f;outline-offset:3px}.primary{background:var(--green);border-color:var(--green);color:#fff}.primary:hover:not(:disabled){background:#35634e;color:white}.small{padding:6px 10px;min-height:36px;font-size:12px}a{color:#315a48;text-underline-offset:3px}h1,h2,h3,p{margin:0}select{background:var(--paper);border:1px solid var(--line);border-radius:7px;padding:8px;color:var(--ink)}
+header{max-width:1500px;margin:auto;padding:30px 32px 20px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;gap:17px;align-items:center}.seal{width:56px;height:65px;border:1px solid #385546;display:grid;place-items:center;font-family:var(--serif);font-size:24px;line-height:1.1;letter-spacing:4px;padding-left:4px;background:#f8f6ed}.kicker{font-size:10px;letter-spacing:.18em;color:#68796b}.brand h1{font-family:var(--serif);font-size:30px;letter-spacing:.08em;font-weight:600;line-height:1.4}.brand p{font-size:12px;color:var(--muted);margin-top:2px}.header-actions{display:flex;gap:8px;align-items:center}.local{font-size:11px;color:#627a62}.local:before{content:"";display:inline-block;width:6px;height:6px;background:#6d916f;border-radius:50%;margin-right:6px}
+main{max-width:1500px;padding:0 32px 38px;margin:auto}.notice{border:1px solid #e2d5b8;border-left:3px solid #ac864a;background:#fbf5e6;padding:11px 16px;border-radius:6px;display:flex;gap:14px;align-items:center;margin-bottom:18px;font-size:12px}.notice strong{white-space:nowrap;color:var(--amber)}.notice span{color:#655d4e}.app-grid{display:grid;grid-template-columns:minmax(0,1fr) 352px;gap:20px;align-items:start}.card{background:var(--paper);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);overflow:hidden}
+.stage-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 18px;border-bottom:1px solid var(--line)}.stage-title{font-family:var(--serif);font-size:17px}.stage-title small{font:11px var(--sans);color:var(--muted);margin-left:8px}.stage-tools{display:flex;gap:7px;align-items:center;font-size:11px}.switch{display:flex;align-items:center;gap:5px;cursor:pointer}.switch input{accent-color:var(--green)}.viewbox{position:relative;background:#edeade;overflow:auto;max-height:72vh;scrollbar-width:thin}.room-svg{width:100%;height:auto;display:block;min-width:0;max-height:72vh;user-select:none;-webkit-user-select:none}.viewbox.zoomed .room-svg{width:145%;max-height:none;max-width:none}.stage-card:fullscreen{display:flex;flex-direction:column;background:var(--paper);border-radius:0;max-height:100vh}.stage-card:fullscreen .viewbox{flex:1;max-height:none;display:flex;justify-content:center}.stage-card:fullscreen .room-svg{height:100%;width:auto;max-height:none}.stage-card:fullscreen .caption-bar{display:none}.stage-foot{display:flex;gap:14px;flex-wrap:wrap;justify-content:space-between;padding:8px 16px;font-size:10px;color:var(--muted);border-top:1px solid var(--line)}.stage-foot .legend{display:flex;gap:11px}.dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:4px;background:#ad8551}.dot.flower{background:#466c4c}.dot.moon{background:#b09248}
+.caption-bar{background:#eaf0e7;padding:13px 17px;display:grid;grid-template-columns:26px 1fr;gap:9px;border-top:1px solid #d5dfd0;min-height:70px}.caption-icon{font-family:var(--serif);font-size:24px;color:#6c8867}.caption-bar b{font-size:12px;display:block}.caption-bar p{font-size:12px;color:#536451}.controls{padding:14px 17px;border-top:1px solid var(--line);background:var(--paper)}.scrub-row{display:flex;gap:12px;align-items:center;margin-bottom:12px}.scrub-row input{width:100%;accent-color:var(--green)}.step-count{font-variant-numeric:tabular-nums;font-size:11px;white-space:nowrap;color:var(--muted)}.transport{display:flex;align-items:center;gap:7px;flex-wrap:wrap}.transport .icon-btn{min-width:39px;padding:8px}.transport #play{min-width:112px}.speed-wrap{margin-left:auto;display:flex;gap:5px;align-items:center;font-size:11px}.speed-wrap select{font-size:12px;padding:7px}.shortcuts{font-size:10px;color:#8b9389;margin-top:8px;text-align:right}
+.side{display:flex;flex-direction:column;gap:15px}.instruction{padding:19px}.eyebrow{font-size:10px;letter-spacing:.12em;color:#7b8779;margin-bottom:8px}.step-top{display:flex;justify-content:space-between;gap:8px;align-items:center}.evidence{display:inline-flex;align-items:center;border-radius:4px;padding:2px 7px;font-size:10px;white-space:nowrap;background:var(--greenlight);color:#4c684f}.evidence.model{background:var(--amberbg);color:var(--amber)}#stepTitle{font-family:var(--serif);font-size:22px;line-height:1.5;margin:7px 0 12px;letter-spacing:.02em}#stepDesc{font-size:12px;line-height:1.9;color:#526052;min-height:69px}.cue-box{margin-top:14px;padding:11px 12px;background:#f2f3e9;border-radius:7px;border-left:2px solid #91a382}.cue-box label{font-size:10px;color:#78846f;letter-spacing:.06em}.cue-box p{font-size:13px;font-weight:600;margin-top:2px}.source-line{font-size:10px;color:#7e7d69;margin-top:10px}.source-line a{font-size:10px}.understood{display:flex;align-items:center;gap:7px;font-size:11px;margin-top:14px;padding-top:12px;border-top:1px solid var(--line);cursor:pointer}.understood input{accent-color:var(--green)}.person-card-wrap{padding:15px}.section-line{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}.section-line h2{font-size:13px;font-weight:600}.section-line small{font-size:10px;color:var(--muted)}.person-list{display:flex;flex-direction:column;gap:6px}.person-row{border:1px solid transparent;background:#f6f6ef;border-radius:7px;padding:8px 9px;display:grid;grid-template-columns:30px 1fr auto;gap:8px;text-align:left;align-items:center;min-height:58px;width:100%}.person-row.active{border-color:#c6d2bd;background:#edf2e8}.person-row.focused{outline:2px solid #b29768;outline-offset:0}.person-id{width:28px;height:28px;display:grid;place-items:center;border-radius:50%;color:white;font:600 13px var(--sans)}.person-detail strong{display:block;font-size:11px;font-weight:600}.person-detail span{display:block;font-size:10px;color:#747d70;line-height:1.5}.person-role{font-size:10px;min-width:26px;border-radius:4px;padding:2px 5px;background:#e4e9df;text-align:center}.person-role.flower{background:#dce7d6;color:#486a44}.person-role.moon{background:#efe3c2;color:#8b6c28}.focus-note{font-size:10px;color:#79806d;margin-top:9px;min-height:16px}.note-card{padding:15px}.note-card textarea{width:100%;min-height:75px;resize:vertical;border:1px solid #dde0d2;border-radius:6px;padding:9px;background:#fffef9;font-size:12px;line-height:1.7;color:var(--ink)}.save-status{font-size:10px;color:#7d8677;margin-top:5px}.progress-mini{height:4px;border-radius:2px;background:#e7e8de;margin-top:12px;overflow:hidden}.progress-mini div{height:100%;background:#82987b;transition:width .2s}
+.below{margin-top:20px;display:grid;grid-template-columns:minmax(0,1fr) 352px;gap:20px}.chapter-card{padding:17px 18px}.chapters{display:flex;gap:7px;margin-top:12px;overflow-x:auto;padding-bottom:5px}.chapter{min-width:74px;flex:1;padding:9px 6px;font-size:11px;text-align:center;border-radius:7px}.chapter small{display:block;font-size:9px;color:#86907f}.chapter.current{background:var(--green);border-color:var(--green);color:white}.chapter.current small{color:#c7d5c4}.chapter.done{border-color:#bac9af}.chapter-description{font-size:10px;color:var(--muted);margin-top:9px}.track-table{width:100%;border-collapse:collapse;font-size:11px;margin-top:13px}.track-table td,.track-table th{padding:8px 7px;border-top:1px solid #e7e7da;text-align:center}.track-table th{font-weight:500;color:#7a8273;font-size:10px}.track-table .row-current{background:#eef2e7}.track-table td:first-child,.track-table th:first-child{text-align:left}.tiny-id{display:inline-grid;place-items:center;width:20px;height:20px;font-size:10px;border-radius:50%;color:#fff;margin-right:3px}.practice-card{padding:17px}.practice-card h2{font-size:13px}.practice-card p{font-size:11px;color:var(--muted);margin-top:6px}.practice-card .mode-line{display:flex;align-items:center;justify-content:space-between;gap:8px}.practice-card .mode-line select{font-size:11px;padding:5px}.quiz-area{margin-top:13px;padding-top:12px;border-top:1px solid var(--line)}#quizPrompt{font-size:12px;font-weight:600;color:var(--ink);margin-bottom:9px}.quiz-choices{display:grid;gap:6px}.quiz-choices button{font-size:11px;min-height:36px;text-align:left;padding:7px 9px}.quiz-choices button.correct{background:#e3efdc;border-color:#94ad7b}.quiz-choices button.wrong{background:#f5e6de;border-color:#c7a28b}.feedback{min-height:33px;font-size:11px!important;line-height:1.65}.library{margin-top:20px;padding:18px}.library summary{cursor:pointer;font-size:13px;font-weight:600}.library p,.library li{font-size:12px;color:#65715f;line-height:1.9}.library ol,.library ul{padding-left:21px}.source-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:14px}.source-grid h3{font-size:12px;margin-bottom:7px}.source-grid .chip{display:inline-block;background:#e8eee2;color:#5a7251;font-size:10px;padding:1px 6px;border-radius:4px;margin:0 5px 4px 0}.source-grid .chip.amber{background:#f6ecd5;color:#8b672f}.flow-list{max-height:360px;overflow:auto;margin-top:12px;display:grid;gap:5px}.flow-item{display:flex;justify-content:space-between;gap:15px;font-size:11px;padding:8px 10px;min-height:38px;text-align:left}.flow-item.on{background:#e2eadc}.flow-item span:first-child{min-width:28px;color:#819277}.flow-item b{flex:1;font-weight:500}.flow-item small{color:#87917d;font-size:10px}.download-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}
+footer{display:flex;justify-content:space-between;gap:18px;font-size:10px;color:#858e7e;margin-top:19px}.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);max-width:90%;padding:11px 18px;border-radius:8px;background:#263f32;color:#fff;font-size:12px;z-index:20;box-shadow:0 5px 24px #0002;opacity:0;pointer-events:none;transition:opacity .2s}.toast.visible{opacity:1}.dialog{border:1px solid #d9ddcd;border-radius:13px;padding:24px;max-width:660px;width:calc(100% - 32px);background:var(--paper);color:var(--ink)}.dialog::backdrop{background:#162c2366;backdrop-filter:blur(3px)}.dialog h2{font-family:var(--serif);font-size:24px;margin-bottom:12px}.dialog p{font-size:13px;line-height:1.9;margin-top:10px}.dialog button{margin-top:16px}
+.room-label{font-family:var(--sans);fill:#6e765d;font-size:14px;letter-spacing:1px}.room-mini{font-family:var(--sans);fill:#879077;font-size:10px}.svg-person{cursor:pointer;outline:none}.svg-person .outline{opacity:0}.svg-person.focused .outline{opacity:1}.svg-person:focus .outline{opacity:1}.svg-person .active-ring{opacity:0}.svg-person.active .active-ring{opacity:1;animation:ring 2s ease-in-out infinite}.person-tag{font-family:var(--sans);font-size:12px;fill:#33462f}.svg-badge text{font-family:var(--sans);font-size:12px;fill:#fff}.svg-role-bg{fill:#416342}.svg-badge.moon .svg-role-bg{fill:#a28342}.pose-bow .figure-inner{transform-origin:0 0;animation:bow 1.8s ease-in-out infinite}.pose-whisk .right-arm{transform-origin:15px -4px;animation:whisk .19s ease-in-out infinite alternate}.pose-drink .left-arm,.pose-drink .right-arm{transform:translate(0,-10px)}.pose-scoop .right-arm{transform-origin:15px -4px;animation:scoop 1.5s ease-in-out infinite}.steam{stroke:#fff;stroke-width:3;fill:none;opacity:.5;animation:steam 3s ease-in-out infinite}.steam:nth-child(2){animation-delay:.7s}.steam:nth-child(3){animation-delay:1.2s}.route-line{fill:none;stroke-width:2.5;stroke-dasharray:5 7;opacity:.65}.route-end{opacity:.65}.off-route{display:none}.spark{animation:glow 1.8s ease-in-out infinite}.status-bubble{font-family:var(--sans);font-size:11px;fill:#405337}.prop-label{font-family:var(--sans);font-size:11px;fill:#5b644e}
+@keyframes whisk{from{transform:rotate(-10deg)}to{transform:rotate(12deg)}}@keyframes scoop{0%,100%{transform:rotate(0)}50%{transform:rotate(-18deg)}}@keyframes bow{0%,100%{transform:scaleY(1)}45%,65%{transform:translateY(-7px) scaleY(.8)}}@keyframes steam{0%,100%{opacity:.18;transform:translateY(3px)}50%{opacity:.55;transform:translateY(-5px)}}@keyframes ring{50%{opacity:.5}}@keyframes glow{50%{opacity:.45}}
+@media(min-width:1600px){.room-svg{max-height:76vh}.viewbox{max-height:76vh}}
+@media(max-width:1100px){header{padding:22px 20px 16px}main{padding:0 20px 28px}.app-grid,.below{grid-template-columns:minmax(0,1fr) 305px;gap:14px}.instruction{padding:15px}#stepTitle{font-size:20px}.stage-tools .switch{display:none}.brand h1{font-size:26px}.notice{align-items:flex-start;gap:9px}.local{display:none}.room-svg,.viewbox{max-height:66vh}}
+@media(max-width:820px){header{padding:19px 14px 15px;gap:8px}main{padding:0 12px 24px}.brand{gap:11px}.seal{width:40px;height:49px;font-size:19px}.brand h1{font-size:24px}.brand p{font-size:10px}.header-actions .secondary-action{display:none}.notice{font-size:11px;padding:10px 12px;display:block}.notice strong{margin-right:5px}.app-grid,.below{grid-template-columns:1fr;gap:14px}.side{display:grid;grid-template-columns:1fr 1fr;gap:12px}.instruction{grid-column:1/-1}.note-card{align-self:start}.stage-head{padding:11px 13px}.stage-title{font-size:15px}.stage-title small{font-size:9px}.room-svg,.viewbox{max-height:none}.shortcuts{display:none}.source-grid{grid-template-columns:1fr;gap:15px}.stage-foot{font-size:9px;padding:7px 11px}.transport #play{min-width:95px}.transport button{padding:7px 9px}.below{margin-top:14px}.track-table{margin-top:12px}.practice-card .mode-line select{font-size:12px}footer{display:block}footer span{display:block}.caption-bar{min-height:64px}.instruction #stepDesc{min-height:0}.header-actions button{padding:6px 9px;font-size:11px;min-height:36px}}
+@media(max-width:450px){.side{grid-template-columns:1fr}.person-card-wrap,.note-card{grid-column:1/-1}.person-list{gap:5px}.person-row{min-height:52px}.kicker{font-size:9px;letter-spacing:.12em}.stage-tools{gap:5px}.stage-title small{display:block;margin:0}.transport{gap:5px}.transport .icon-btn{min-width:34px}.speed-wrap{margin-left:auto}.stage-foot .legend{gap:8px}.controls{padding:11px}.chapter{min-width:61px;font-size:10px}.brand p{max-width:220px}.stage-head{padding:9px 11px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{header,main{max-width:none}.header-actions,.controls,.stage-tools,.practice-card,.note-card,.download-row,footer{display:none!important}.app-grid,.below{grid-template-columns:1fr}.viewbox,.room-svg{max-height:490px}.side{display:block}.person-card-wrap{margin-top:10px}.notice{font-size:10px}body{background:white}.card{box-shadow:none;break-inside:avoid}.library details{display:block}.shortcuts{display:none}.stage-card{break-after:page}}
+
+.course-tabs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 0 18px}
+.course-tab{display:flex;align-items:center;text-align:left;gap:14px;padding:13px 19px;background:#f8f7ee;border-color:#d5d8c9;min-height:76px}
+.course-tab.selected{background:#284d3e;color:#fff;border-color:#284d3e}
+.course-tab b{font-family:var(--serif);font-size:23px;letter-spacing:.1em}
+.course-tab small{display:block;font-size:11px;opacity:.72;line-height:1.5}
+.course-no{font-family:serif;font-size:20px;opacity:.5}.course-arrow{margin-left:auto;font-size:22px;opacity:.45}
+.course-tab:hover:not(:disabled){background:#e6ecdf}.course-tab.selected:hover:not(:disabled){background:#315b48}
+.koicha-source-block{margin-top:25px;padding-top:18px;border-top:1px solid var(--line)}
+.koicha-source-block>h3{font-family:var(--serif);font-size:18px}
+.pose-knead .right-arm{transform-origin:15px -4px;animation:whisk 1.05s ease-in-out infinite alternate}
+.pose-rinse .right-arm{transform-origin:15px -4px;animation:scoop 1.3s ease-in-out infinite}
+.pose-clean .right-arm{transform-origin:15px -4px;animation:whisk 1s ease-in-out infinite alternate}
+body.paused .figure-inner,body.paused .left-arm,body.paused .right-arm{animation-play-state:paused}
+.tool-highlight{filter:drop-shadow(0 0 5px #efdb92)}
+.preview-phase{font-size:11px;color:#697762}
+.figure-id{font-weight:700;fill:#fff;font-family:var(--sans);font-size:13px}
+.svg-person.dimmed{opacity:.27}
+.tool-note{fill:#746543;font-size:11px;font-family:var(--sans)}
+@media(max-width:520px){.course-tabs{gap:8px}.course-tab{gap:8px;padding:10px 12px;min-height:74px}.course-tab b{font-size:20px}.course-no{display:none}.course-arrow{display:none}.course-tab small{font-size:10px}}
+@media print{.course-tabs{display:none}}
+
+.stage-head+.controls{border-top:0;border-bottom:1px solid var(--line)}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><div class="seal" aria-hidden="true">茶<br>湯</div><div><div class="kicker">表千家 · 花月 / 濃茶 · 非公式学習モデル</div><h1>茶の湯の稽古室</h1><p>畳の上で、人と道具の流れをたどる。</p></div></div>
+  <div class="header-actions"><span class="local">単一ファイル・オフライン対応</span><button class="small secondary-action" id="showHelp">使い方</button><button class="small" id="showSources">根拠と範囲</button></div>
+</header>
+<main>
+<nav class="course-tabs" aria-label="稽古を選ぶ">
+<button id="courseKagetsu" class="course-tab selected" aria-pressed="true"><span class="course-no">01</span><span><b>花月</b><small>五人の役替わりと、五服の流れ</small></span><span class="course-arrow">↗</span></button>
+<button id="courseKoicha" class="course-tab" aria-pressed="false"><span class="course-no">02</span><span><b>濃茶</b><small>炉・運び想定 · 亭主1人＋客4人</small></span><span class="course-arrow">↗</span></button>
+</nav>
+<div class="notice" id="courseNotice" role="note"><strong>正式な点前の再現ではありません</strong><span id="noticeText">五服の流れは公開稽古記録に基づきます。畳の配置・人物の経路・札の交換処理は学習用モデルです。</span></div>
+<div class="app-grid">
+ <section class="card stage-card" id="stageCard" aria-label="茶室シミュレーター">
+  <div class="stage-head"><div class="stage-title"><span id="roomHeading">八畳の稽古室</span> <small>上から見る模式図</small></div><div class="stage-tools"><label class="switch"><input type="checkbox" id="showPaths" checked>動線</label><button class="small" id="zoom" aria-pressed="false">拡大</button><button class="small" id="fullscreen">全画面</button></div></div>
+  <div class="viewbox" id="viewbox"><svg class="room-svg" id="room" viewBox="0 0 1000 860" role="img" aria-labelledby="roomTitle roomDescription">
+   <title id="roomTitle">表千家の花月を学ぶ八畳の茶室模式図</title><desc id="roomDescription">AからEの五人と茶碗、折据が学習段階に合わせて移動します。座標、動線、畳割りは正式な所作を示すものではありません。</desc>
+   <defs>
+    <pattern id="tatamiWeave" width="5" height="9" patternUnits="userSpaceOnUse"><rect width="5" height="9" fill="#bdc39d"/><path d="M0 1H5 M0 4H5 M0 7H5" stroke="#899873" stroke-width=".5" opacity=".55"/><path d="M1 0V9 M4 0V9" stroke="#dce0bd" stroke-width=".55" opacity=".5"/></pattern>
+    <pattern id="tatamiWeaveV" width="9" height="5" patternUnits="userSpaceOnUse"><rect width="9" height="5" fill="#bec49f"/><path d="M1 0V5 M4 0V5 M7 0V5" stroke="#899873" stroke-width=".5" opacity=".55"/><path d="M0 1H9 M0 4H9" stroke="#dce0bd" stroke-width=".55" opacity=".5"/></pattern>
+    <pattern id="heri" width="12" height="12" patternUnits="userSpaceOnUse"><rect width="12" height="12" fill="#4e6251"/><path d="M0 6L6 0L12 6L6 12Z" fill="none" stroke="#859077" stroke-width=".6" opacity=".55"/></pattern>
+    <pattern id="wood" width="160" height="18" patternUnits="userSpaceOnUse"><rect width="160" height="18" fill="#927a5c"/><path d="M0 5Q40 1 80 6T160 4M0 13Q60 10 160 14" stroke="#67543b" stroke-width=".7" opacity=".35"/></pattern>
+    <linearGradient id="floorLight" x1="1" y1="0" x2="0" y2="1"><stop stop-color="#fffbe2" stop-opacity=".38"/><stop offset="1" stop-color="#314c28" stop-opacity=".06"/></linearGradient>
+    <radialGradient id="kamaGrad"><stop stop-color="#777d70"/><stop offset=".65" stop-color="#454a43"/><stop offset="1" stop-color="#242e28"/></radialGradient>
+    <radialGradient id="bowlGrad"><stop stop-color="#688c37"/><stop offset=".67" stop-color="#57782d"/><stop offset=".75" stop-color="#bdbba2"/><stop offset="1" stop-color="#e5e0ca"/></radialGradient>
+    <filter id="softShadow" x="-.4" y="-.4" width="1.8" height="1.8"><feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#26301e" flood-opacity=".18"/></filter>
+    <filter id="smallShadow" x="-.5" y="-.5" width="2" height="2"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#253323" flood-opacity=".22"/></filter>
+    <symbol id="personShape" viewBox="-40 -48 80 96">
+      <ellipse cx="0" cy="22" rx="30" ry="17" fill="#253025" opacity=".18"/>
+      <g class="figure-inner">
+      <path d="M-23 5Q-31 15-28 30Q-19 39-2 34L0 21L2 34Q19 39 28 30Q31 15 23 5Z" fill="var(--coat)"/>
+      <path d="M-25 4Q-18 -11 0 -8Q18 -11 25 4L25 23Q12 31 0 24Q-12 31-25 23Z" fill="var(--coat)" stroke="#152b25" stroke-opacity=".3"/>
+      <path d="M-13 -4L7 16L0 25L-19 5M12 -3L-3 13" fill="none" stroke="#f0eee0" stroke-width="3" stroke-linejoin="round" opacity=".83"/>
+      <path d="M-22 19Q0 24 22 19L22 26Q0 31-22 26Z" fill="var(--obi)"/>
+      <g class="left-arm"><path d="M-19 1Q-34 3-30 -12L-22 -17L-15 -7" fill="var(--coat)" stroke="#21372a" stroke-opacity=".25"/><ellipse cx="-24" cy="-17" rx="6" ry="8" fill="#dabd98" transform="rotate(23 -24 -17)"/></g>
+      <g class="right-arm"><path d="M19 1Q34 3 30 -12L22 -17L15 -7" fill="var(--coat)" stroke="#21372a" stroke-opacity=".25"/><ellipse cx="24" cy="-17" rx="6" ry="8" fill="#dabd98" transform="rotate(-23 24 -17)"/></g>
+      <ellipse cx="0" cy="-14" rx="16" ry="18" fill="#dfc39e"/><path d="M-15 -11Q-20 -38 0 -36Q20 -38 15 -11Q10 -27 0 -25Q-10 -27-15 -11" fill="#343b32"/><ellipse cx="0" cy="-27" rx="15" ry="9" fill="#383e35"/><path d="M-8 -31Q0 -36 8 -31" fill="none" stroke="#6d7064" stroke-width="2" opacity=".5"/>
+      </g>
+    </symbol>
+   </defs>
+   <rect width="1000" height="860" fill="#edeade"/>
+   <rect x="129" y="90" width="722" height="722" rx="2" fill="#67583e" filter="url(#softShadow)"/>
+   <rect x="135" y="96" width="710" height="710" fill="url(#wood)"/>
+   <g id="mats"></g>
+   <rect x="150" y="110" width="680" height="680" fill="url(#floorLight)" pointer-events="none"/>
+   <!-- Architectural setting is illustrative, not a measured tea-room plan. -->
+   <g id="tokonoma"><rect x="150" y="17" width="520" height="66" rx="1" fill="#e4ddcc" stroke="#b2a184"/><rect x="150" y="72" width="520" height="11" fill="url(#wood)"/><rect x="290" y="23" width="232" height="48" fill="#b0a68b"/><rect x="300" y="27" width="212" height="38" fill="#f3efdf"/><text x="406" y="53" text-anchor="middle" fill="#485647" font-size="21" font-family="serif" letter-spacing="12" id="scrollText">花 月</text><ellipse cx="604" cy="62" rx="15" ry="8" fill="#77724d"/><path d="M604 63L604 29M604 45L590 30M604 39L616 22" stroke="#637650" fill="none" stroke-width="2"/><ellipse cx="588" cy="27" rx="5" ry="9" fill="#8b9d6a" transform="rotate(-40 588 27)"/><circle cx="616" cy="21" r="7" fill="#f3ede2"/><text x="196" y="53" class="room-mini">床の間</text></g>
+   <g id="waterSpace"><rect x="872" y="130" width="104" height="610" fill="#e5e0d3" stroke="#d1cab8"/><path d="M879 145V729M899 145V729M919 145V729M939 145V729M959 145V729" stroke="#c6b99e" opacity=".45"/><text x="924" y="168" text-anchor="middle" class="room-label">水 屋</text><rect x="883" y="194" width="81" height="58" rx="4" fill="#c7c5ad"/><rect x="895" y="204" width="57" height="36" rx="4" fill="#a6b4a2"/><text x="924" y="275" text-anchor="middle" class="room-mini">亭主の出入り</text></g>
+   <g id="doors"><rect x="354" y="791" width="138" height="21" fill="#d5c7ad"/><path d="M352 812H494" stroke="#9f8e71" stroke-width="2"/><text x="423" y="836" class="room-label" text-anchor="middle">客の出入り（模式）</text><rect x="830" y="641" width="21" height="104" fill="#d7c9b2"/><path d="M854 642V745" stroke="#9f8e71" stroke-width="2"/></g>
+   <g id="seatGuides"></g>
+   <g id="staticTools">
+    <rect x="578" y="181" width="111" height="111" fill="#6b5440" stroke="#847354" stroke-width="5"/><rect x="586" y="189" width="95" height="95" fill="#34342a"/>
+    <ellipse cx="634" cy="240" rx="41" ry="38" fill="url(#kamaGrad)" filter="url(#smallShadow)"/><ellipse cx="634" cy="229" rx="24" ry="21" fill="#28352b"/><g id="kamaLid"><ellipse cx="634" cy="229" rx="24" ry="21" fill="#535b50" stroke="#9a9e85" stroke-width="1.5"/><ellipse cx="634" cy="227" rx="6" ry="5" fill="#a6a18b"/></g><path d="M597 233q-16 -7-12 9M671 233q16 -7 12 9" fill="none" stroke="#818673" stroke-width="4"/>
+    <g><path class="steam" d="M624 200q-8 -13 1 -26t1 -21"/><path class="steam" d="M637 198q8 -14-1 -26t1 -20"/><path class="steam" d="M649 204q-6 -12 1 -25t-1 -20"/></g>
+    <text x="634" y="312" text-anchor="middle" class="prop-label">釜・炉（位置は模式）</text>
+    <g id="mizusashi"><ellipse cx="752" cy="245" rx="31" ry="30" fill="#678477" stroke="#3d6153" stroke-width="3"/><ellipse cx="752" cy="241" rx="25" ry="22" fill="#7d9a8a"/><ellipse cx="752" cy="240" rx="6" ry="4" fill="#456354"/><text x="752" y="292" text-anchor="middle" class="prop-label">水指</text></g>
+   </g>
+   <g id="portableTools">
+    <g id="natsume"><ellipse cx="747" cy="341" rx="19" ry="18" fill="#302f27" filter="url(#smallShadow)"/><ellipse cx="747" cy="336" rx="17" ry="12" fill="#4b4134"/><path d="M736 332q11 -6 20 0" stroke="#a7976c" fill="none" opacity=".5"/><text x="747" y="376" text-anchor="middle" class="prop-label">棗</text></g>
+    <g id="chasen"><path d="M680 337L689 305L702 305L711 337Q697 344 680 337Z" fill="#d0ad62" stroke="#937c43"/><path d="M687 334L692 307M694 338L697 307M702 336L700 307" stroke="#8f793d"/><rect x="691" y="291" width="10" height="17" rx="3" fill="#b99d5e"/><text x="696" y="367" text-anchor="middle" class="prop-label">茶筅</text></g>
+    <path id="scoopTool" d="M716 385L779 384q10 -2 9 -9" fill="none" stroke="#c4a569" stroke-width="4" stroke-linecap="round"/>
+    <g id="kensui"><ellipse cx="570" cy="482" rx="26" ry="22" fill="#898671" stroke="#625f4b" stroke-width="3"/><ellipse cx="570" cy="479" rx="20" ry="16" fill="#676f5d"/><text x="570" y="523" class="prop-label" text-anchor="middle">建水</text></g>
+    <path d="M723 465L762 426" stroke="#bda464" stroke-width="5"/><ellipse cx="770" cy="419" rx="13" ry="12" fill="#baa268" stroke="#907d46" stroke-width="2"/>
+    <rect x="700" y="493" width="31" height="25" rx="2" fill="#bd674d" transform="rotate(-12 715 505)"/>
+   </g>
+   <g id="koichaTools"></g><g id="routes" pointer-events="none"></g>
+   <g id="people"></g>
+   <g id="props">
+    <g id="boxProp" filter="url(#smallShadow)"><path d="M-20 -16H20V16H-20Z" fill="#eee6ca" stroke="#a29272" stroke-width="1.5"/><path d="M-20 -16L0 -4L20 -16M-20 16L0 4L20 16" fill="#dbd2b7" stroke="#b4a484"/><rect x="-8" y="-7" width="16" height="14" fill="#b6a77d"/><text x="0" y="37" text-anchor="middle" class="prop-label">折据*</text></g>
+    <g id="clothProp"></g><g id="bowlProp" filter="url(#smallShadow)"><ellipse rx="23" ry="21" fill="#aaa78e"/><ellipse cy="-3" rx="23" ry="21" fill="#e7e0c5" stroke="#837e65" stroke-width="1.2"/><ellipse id="teaSurface" cy="-4" rx="17" ry="15" fill="#c5c1a6"/><path id="teaFoam" d="M-13 -8Q-8 -20 5 -16" stroke="#a6bc71" stroke-width="3" fill="none" opacity="0"/><text id="bowlLabel" x="0" y="37" text-anchor="middle" class="prop-label">茶碗</text></g>
+   </g>
+   <g id="roomBanner"><rect x="392" y="127" width="403" height="34" rx="6" fill="#f5f2e6" opacity=".9"/><text id="sceneBanner" x="594" y="150" text-anchor="middle" class="status-bubble">開始前 · 五人の位置を確認</text></g>
+   <text x="66" y="176" text-anchor="middle" class="room-mini">待機</text>
+   <text x="492" y="774" text-anchor="middle" class="room-mini">破線は動きの説明用。畳の縁・足運びの教則ではありません。</text>
+  </svg></div>
+  <div class="stage-foot"><div class="legend" id="legend"><span><i class="dot flower"></i>花＝点てる役</span><span><i class="dot moon"></i>月＝飲む役</span><span><i class="dot"></i>破線＝仮の動線</span></div><span id="propHint">*折据の移動は注目先。回し順は省略。</span></div>
+  <div class="caption-bar" aria-live="polite"><span class="caption-icon">気</span><div><b id="captionTitle">まずは全員を見る</b><p id="captionText">「再生」または「次へ」で始めます。</p></div></div>
+  <div class="controls">
+    <div class="scrub-row"><input id="scrubber" type="range" min="0" max="1" value="0" aria-label="場面を選択"><span class="step-count" id="stepCount">01 / 01</span></div>
+    <div class="transport"><button id="restart" class="icon-btn" title="最初へ" aria-label="最初へ">↶</button><button id="prev" class="icon-btn" aria-label="前の場面へ">‹</button><button id="play" class="primary">▶ 再生</button><button id="next">次へ ›</button><div class="speed-wrap"><label for="speed">速さ</label><select id="speed"><option value="0.5">ゆっくり</option><option value="1" selected>標準</option><option value="1.7">速い</option><option value="3">早送り</option></select></div></div>
+    <p class="shortcuts">Space：再生 / 停止　← →：一場面ずつ　Home：最初　End：最後</p>
+  </div>
+ </section>
+ <aside class="side" aria-label="現在の手順と五人の動き">
+  <section class="card instruction">
+    <div class="step-top"><span class="eyebrow" id="chapterName">始まり</span><span class="evidence model" id="evidence">学習用の設定</span></div>
+    <h2 id="stepTitle"></h2><p id="stepDesc"></p>
+    <div class="cue-box"><label>動くきっかけ / 覚えること</label><p id="stepCue"></p></div>
+    <p class="source-line" id="stepSource"></p>
+    <label class="understood"><input type="checkbox" id="stepUnderstood">この場面を自分の言葉で説明できる</label>
+    <div class="progress-mini"><div id="learnedBar"></div></div><p class="save-status" id="learnedCount"></p>
+  </section>
+  <section class="card person-card-wrap"><div class="section-line"><h2>五人は、いま何をする？</h2><small>選ぶと追跡</small></div><div id="personList" class="person-list"></div><p class="focus-note" id="focusNote">A〜Eは人物の名前です。座や役が替わっても変わりません。</p></section>
+  <section class="card note-card"><div class="section-line"><h2>先生に確認するメモ</h2><small id="noteStep"></small></div><textarea id="memo" placeholder="この場面の正しい位置・合図・所作を、稽古で確認して記録。"></textarea><p class="save-status" id="saveStatus">このブラウザ内に保存します。</p></section>
+ </aside>
+</div>
+<div class="below">
+ <section class="card chapter-card"><div class="section-line"><h2>始まりから、五服、終わりまで</h2><small id="durationNote"></small></div><nav class="chapters" id="chapters" aria-label="章を選択"></nav><p class="chapter-description">配役は記憶用の固定例です。実際に全員が一服ずつ飲み、一回ずつ点てる決まりではありません。</p><table class="track-table"><thead><tr><th>服</th><th>点てる人</th><th>いただく人</th><th>次の花</th></tr></thead><tbody id="roundTable"></tbody></table></section>
+ <section class="card practice-card"><div class="mode-line"><h2>復習の設定</h2><select id="scenario" aria-label="配役の例"><option value="standard">配役例A</option><option value="hostLast">配役例B・亭主が最終花</option></select></div><p>人の追跡は上のA〜Eを選択。下の問題で、流れと合図を確かめます。</p><div class="quiz-area"><div class="section-line"><span class="eyebrow">確認問題</span><small id="quizScore"></small></div><p id="quizPrompt"></p><div id="quizChoices" class="quiz-choices"></div><p id="quizFeedback" class="feedback" aria-live="polite"></p><button class="small" id="quizNext">別の問題</button></div></section>
+</div>
+<section class="card library"><details id="flowDetails"><summary>全場面の一覧 · 人物を追って復習する</summary><p>同じ画面に直接移動できます。各場面で五人の状態を保存しているため、前後しても配役が変わりません。</p><div id="flowList" class="flow-list"></div></details></section>
+<section class="card library"><details id="sourceDetails"><summary>根拠・未確認事項・この教材で再現しないもの</summary><div class="source-grid">
+ <div><h3><span class="chip">公式資料</span>花月の位置づけ</h3><p>表千家不審菴の用語集は、花月が七事式の一つであることを説明しています。以下の公式ページだけでは、全ての動作や席配置を確定できません。</p><p><a href="https://www.omotesenke.jp/cgi-bin/result.cgi?id=130" target="_blank" rel="noopener noreferrer">表千家不審菴「七事式」</a></p><p><a href="https://www.kitayamakaikan.jp/sp/publication/index4.html" target="_blank" rel="noopener noreferrer">表千家北山会館・茶の湯基礎教材の案内</a>：教本の本文は未閲覧です。画面の座標や細かな所作を確認した根拠にはしていません。</p></div>
+ <div><h3><span class="chip">公開稽古記録</span>採用した流れと合図</h3><p><a href="https://kourakuken.exblog.jp/26163426/" target="_blank" rel="noopener noreferrer">好楽軒「2016 8月お稽古 花月」</a>：五服目、初回と次回以降の札取りの合図、茶碗返却の目安、仮座の移動。</p><p><a href="https://ameblo.jp/asagiitigo/entry-12494487395.html" target="_blank" rel="noopener noreferrer">浅葱庵「花月 覚書」</a>：亭主の準備、花・月、替札。</p><p><a href="https://ameblo.jp/asagiitigo/entry-12494642435.html" target="_blank" rel="noopener noreferrer">浅葱庵「花月 覚書 其の2」</a>：表千家の札、松・箱の扱い。</p><p><a href="https://ameblo.jp/asagiitigo/entry-12495060207.html" target="_blank" rel="noopener noreferrer">浅葱庵「花月 覚書 其の3」</a>：初花に伴う座の繰り上がり、終盤の座戻り・退出。</p><p>いずれも公式教本ではなく、書き手自身の稽古記録です。記述と先生の指導が異なるときは先生に確認してください。</p></div>
+ <div><h3><span class="chip amber">模式・未確認</span>表示と正式手順の境界</h3><p>この八畳図は創作した配置です。人物の経路、左右の足、歩数、手の順、畳目、道具の寸法・位置、炉と風炉の違いは検証していません。人体の動きは点前・喫茶・礼を表す記号的なアニメーションです。</p><p>人物A〜Eの配役、開始時の入室、道具運搬の分割、退出の一人ずつの表示は学習のための仮定です。礼や薄茶点前の全所作を列挙したものではありません。</p></div>
+ <div><h3><span class="chip amber">省略</span>松・替札・箱の分岐</h3><p>一つ箱・二つ箱・はさみ箱、隅かけ、松をかける人の選定、替札の授受を、正しい手順として自動判定する機能は未実装です。折据は「誰に注目するか」を示す表示で、実際の回し順を表しません。</p><p>表千家の札については稽古記録に「一の花・一の月・二・三・ウ」とあります。この画面の「花・月」は役を示すラベルで、実物の札を再現したものではありません。裏千家の「花・月・一・二・三」を表千家の札として表示しない設計です。</p></div>
+</div><div class="koicha-source-block">
+<h3>濃茶の根拠と、今回の設定</h3>
+<div class="source-grid">
+<div><h3><span class="chip">公式資料</span>茶事における濃茶</h3><p><a href="https://www.omotesenke.jp/list5/list5-3/list5-3-4/" target="_blank" rel="noopener noreferrer">表千家不審菴「後座」</a>：濃茶、茶銘・詰の問答、三器の拝見の大きな構成。濃茶の後に後炭・薄茶が続くため、この教材の終了は茶事全体の終わりではありません。</p><p><a href="https://www.omotesenke.jp/list5/list5-2/list5-2-1/" target="_blank" rel="noopener noreferrer">表千家不審菴「茶会の準備」</a>：濃茶を一碗に数人分練ること。各服点ての分岐は本作に含めていません。</p></div>
+<div><h3><span class="chip">公開記録</span>炉と帛紗</h3><p><a href="https://keian.fc2.net/blog-entry-224.html" target="_blank" rel="noopener noreferrer">表千家・啓庵「炉 丸卓の濃茶点前」</a>：中蓋・中仕舞い・中仕舞いを解く目安。元記事は棚のある稽古で、運びの全所作を確認した根拠ではありません。</p><p><a href="https://raishin-an.jp/archives/65" target="_blank" rel="noopener noreferrer">表千家・頼真庵「ふくさ」</a>：使い帛紗と出し帛紗を区別しています。</p><p><a href="https://keian.fc2.net/blog-entry-959.html" target="_blank" rel="noopener noreferrer">啓庵「表千家資格者講習会」</a>：客側での出し帛紗の扱い。公式な講習録ではなく筆者の記録です。</p></div>
+<div><h3><span class="chip">個人の復習記録</span>進行の照合</h3><p><a href="https://london-kyoto.blogspot.com/2016/10/blog-post_73.html" target="_blank" rel="noopener noreferrer">「茶の湯と季節の料理」表千家 炉 濃茶 運び</a>：運び・清め・練り・仕舞い・拝見の概略の参考。公式教本ではありません。この記録の「古帛紗」という表記は採用せず、表千家教室の資料に合わせて「出し帛紗」と表示しています。</p><p>男女による手の違い、持ち替え回数、茶杓の向き、帛紗さばき、茶巾・飲み口の扱い、各服点て、棚物、風炉・逆勝手は未収録です。</p></div>
+<div><h3><span class="chip amber">教材上の設定</span>炉・棚なし・客四人</h3><p>濃茶は亭主Eと客A〜Dの例です。花月と違い、役割は交代しません。茶碗・茶杓・仕覆の運びは理解しやすい場面に分割・集約しています。お茶や道具の量、位置、温度、点前時間を再現する教則ではありません。</p><p>喫茶は一碗を順にいただく歴史的な形式の模式図です。実際の稽古では教室の衛生方針に従ってください。動く人物の向きは注目方向であり、正式な居前や客付を示すものではありません。</p></div>
+</div></div><div class="download-row"><button class="small" id="exportNotes">メモ・進捗を書き出す</button><button class="small" id="importNotes">メモを読み込む</button><button class="small" id="print">この場面を印刷</button><input type="file" accept=".json,application/json" id="importFile" hidden></div></details></section>
+<footer><span>茶の湯の稽古室 · 非公式の復習用学習モデル · 2026年11月作成</span><span>データの外部送信なし。ブラウザの保存が使えない場合も再生できます。</span></footer>
+</main>
+<dialog class="dialog" id="helpDialog"><h2>まず全体を、次に一人を。</h2><p>①上部で「花月」か「濃茶」を選び、「再生」で最初から最後まで一巡します。②A〜Eを選ぶと、その人を強調して追跡できます。③「次へ」「‹」で一場面ずつ確かめ、先生に確認したことを場面別にメモします。</p><p>茶碗は受取・喫茶・返却に合わせて動きます。濃茶では、茶入・仕覆・出し帛紗も表示します。折据は注目先を示す模式表示で、正式な回し順ではありません。「根拠と範囲」で未実装の所作を確認してください。</p><p>スマートフォンは横向き表示や「拡大」も使用できます。保存できない端末ではメモの書き出しを使ってください。</p><button class="primary" id="closeHelp">稽古室へ戻る</button></dialog>
+<div id="toast" class="toast" role="status"></div>
+<script>
+"use strict";
+
+const $ = id => document.getElementById(id);
+const SVG_NS = "http://www.w3.org/2000/svg";
+const PEOPLE = [
+ {id:"A",name:"A",initial:"初座の正客",color:"#496c5b",obi:"#c4bb91"},
+ {id:"B",name:"B",initial:"初座の次客",color:"#627a8b",obi:"#d5c8a5"},
+ {id:"C",name:"C",initial:"初座の三客",color:"#a07160",obi:"#d5c3a3"},
+ {id:"D",name:"D",initial:"初座の四客",color:"#81708c",obi:"#d1c3ab"},
+ {id:"E",name:"E",initial:"本来の亭主",color:"#a18d55",obi:"#ddd1ab"}
+];
+const IDS=PEOPLE.map(p=>p.id);
+const SOURCES = {
+ official:{label:"表千家不審菴・七事式",url:"https://www.omotesenke.jp/cgi-bin/result.cgi?id=130"},
+ R1:{label:"好楽軒・花月の稽古記録",url:"https://kourakuken.exblog.jp/26163426/"},
+ R2:{label:"浅葱庵・花月 覚書",url:"https://ameblo.jp/asagiitigo/entry-12494487395.html"},
+ R3:{label:"浅葱庵・花月 覚書 其の2",url:"https://ameblo.jp/asagiitigo/entry-12494642435.html"},
+ R4:{label:"浅葱庵・花月 覚書 其の3",url:"https://ameblo.jp/asagiitigo/entry-12495060207.html"}
+};
+const SCENARIOS = {
+ standard:{label:"配役例A",flowers:["A","C","E","B","D"],drinkers:["B","D","A","E","C"]},
+ hostLast:{label:"配役例B",flowers:["A","D","B","C","E"],drinkers:["B","E","D","A","C"]}
+};
+const KAGETSU_CHAPTERS=["席入り","初花","一服目","二服目","三服目","四服目","五服目","座戻り","仕舞い・退席"];
+const POS={
+ S0:{x:250,y:220,a:90,seat:"S0",label:"上座側の客座"},
+ S1:{x:250,y:330,a:90,seat:"S1",label:"二つ目の客座"},
+ S2:{x:250,y:440,a:90,seat:"S2",label:"三つ目の客座"},
+ S3:{x:250,y:550,a:90,seat:"S3",label:"下座側の客座"},
+ V:{x:260,y:700,a:90,seat:"V",label:"仮座"},
+ T:{x:650,y:425,a:0,seat:"T",label:"点前座"},
+ STEP:{x:525,y:700,a:0,seat:"STEP",label:"踏込側（模式）"},
+ RECEIVE:{x:435,y:420,a:90,seat:"RECEIVE",label:"茶碗の受渡し側"},
+ PREP:{x:366,y:225,a:270,seat:"PREP",label:"折据を置く側"},
+ OA:{x:66,y:245,a:90,seat:"OA",label:"席外"},
+ OB:{x:66,y:350,a:90,seat:"OB",label:"席外"},
+ OC:{x:66,y:455,a:90,seat:"OC",label:"席外"},
+ OD:{x:66,y:560,a:90,seat:"OD",label:"席外"},
+ OE:{x:926,y:691,a:270,seat:"OE",label:"水屋"}
+};
+const clone=v=>JSON.parse(JSON.stringify(v));
+const pt=(x,y,a=0)=>({x,y,a});
+const coords=k=>clone(POS[k]);
+function routeTo(person,to,kind="normal",state){
+ const from=state.people[person], end=coords(to);
+ let p;
+ if(kind==="enter")p=[pt(102,from.y),pt(102,815),pt(423,815),pt(423,740),pt(366,700),pt(366,end.y),end];
+ else if(kind==="exit")p=[pt(370,from.y),pt(370,735),pt(423,760),pt(423,817),pt(103,817),pt(103,end.y),end];
+ else if(kind==="host")p=[pt(797,695),pt(738,620),pt(end.x,620),end];
+ else if(kind==="toStep")p=[pt(369,from.y),pt(369,635),pt(525,665),end];
+ else if(kind==="toT")p=[pt(620,642),pt(650,553),end];
+ else if(kind==="toV")p=[pt(775,from.y),pt(775,622),pt(588,726),pt(350,726),end];
+ else if(kind==="fill")p=[pt(356,from.y),pt(366,end.y),end];
+ else if(kind==="receive")p=[pt(355,from.y),pt(367,420),end];
+ else if(kind==="seatReturn")p=[pt(364,from.y),pt(355,end.y),end];
+ else p=[end];
+ return p;
+}
+function buildStory(scenarioName){
+ const cast=SCENARIOS[scenarioName], steps=[];
+ let state={people:{},box:{x:922,y:640,visible:false,angle:0},bowl:{x:913,y:635,visible:false,filled:false,owner:null},tools:false,active:[],round:0,chapter:0,banner:"開始前"};
+ IDS.forEach((id,i)=>state.people[id]={...coords("O"+id),role:id==="E"?"亭主":"客",action:"席外で待機",pose:"idle",hasCard:false});
+ function add(title,desc,cue,opt={}){
+   IDS.forEach(id=>{state.people[id].pose="idle";state.people[id].action=state.people[id].seat.startsWith("O")?"席外で待機":"他の人の動きと合図を見る";});
+   state.active=opt.active||[];
+   if(opt.chapter!==undefined)state.chapter=opt.chapter;
+   if(opt.round!==undefined)state.round=opt.round;
+   if(opt.roles)Object.entries(opt.roles).forEach(([id,v])=>state.people[id].role=v);
+   if(opt.actions)Object.entries(opt.actions).forEach(([id,v])=>state.people[id].action=v);
+   if(opt.poses)Object.entries(opt.poses).forEach(([id,v])=>state.people[id].pose=v);
+   if(opt.cards)Object.entries(opt.cards).forEach(([id,v])=>state.people[id].hasCard=v);
+   if(opt.moves)Object.entries(opt.moves).forEach(([id,path])=>Object.assign(state.people[id],path[path.length-1]));
+   if(opt.box)Object.assign(state.box,opt.box);
+   if(opt.bowl)Object.assign(state.bowl,opt.bowl);
+   if(opt.tools!==undefined)state.tools=opt.tools;
+   if(state.bowl.owner){
+     const p=state.people[state.bowl.owner], off=p.a===90?{x:38,y:-5}:{x:0,y:-42};
+     state.bowl.x=p.x+off.x;state.bowl.y=p.y+off.y;
+   }
+   state.banner=opt.banner||title;
+   steps.push({id:scenarioName+"-"+steps.length,title,desc,cue,confidence:opt.confidence||"model",refs:opt.refs||[],caption:opt.caption||cue,captionTitle:opt.captionTitle||"ここを覚える",moves:opt.moves||{},duration:opt.duration||3400,scene:clone(state)});
+ }
+ const personAt=seat=>IDS.find(id=>state.people[id].seat===seat);
+ const move=(id,to,kind)=>routeTo(id,to,kind,state);
+ const roleReset=()=>Object.fromEntries(IDS.map(id=>[id,id==="E"?"亭主":"客"]));
+ add("五人の、一巡を始める","A〜Dは客、Eは本来の亭主として始めます。人物の文字は固定、役と座は変化します。開始から退出までを一つの配役例で追います。","まずは人物A〜Eを見分ける。",{chapter:0,refs:["official"],caption:"図は創作した配置です。足の左右・歩数・畳の縁の越え方は教えません。",captionTitle:"学習モデルの読み方",duration:5000});
+ for(let i=0;i<4;i++){
+   const id=IDS[i];
+   add(id+"が席に入る",id+"を最初の客座に置きます。床・釜の拝見や礼を含む入室の細部はまとめて省略しています。破線は位置の変化を見せる仮の経路です。","入室時の自分の座を覚えておく。",{moves:{[id]:move(id,"S"+i,"enter")},active:[id],actions:{[id]:"入室し、初座に着く"},caption:"最後は初めの座へ戻るため、この人物がどこに座ったかを覚えます。",duration:3600});
+ }
+ add("亭主Eが道具を運ぶ","本来の亭主が点前の準備をします。画面では道具の運搬を一つの場面に集約しています。持つ道具の組合せ・手順は再現していません。","亭主Eと、後で点てる花の役は別。",{moves:{E:move("E","STEP","host")},active:["E"],bowl:{visible:true,owner:"E"},actions:{E:"点前の準備をする"}});
+ add("道具を整える","点前座と道具の関係を確認します。炉・水指・茶碗などの描画は位置の目安で、表千家の正式な置合せではありません。","点前の場所と客の場所を区別する。",{moves:{E:move("E","T","toT")},active:["E"],tools:true,bowl:{owner:null,x:650,y:366,filled:false},actions:{E:"点前道具を整える"}});
+ add("折据を用意する","折据を席中に用意した状態にします。以後の折据アニメーションは「注目先」を示すもので、受け渡す順・手・畳目を示すものではありません。","折据の動きを正式な回し順として覚えない。",{moves:{E:move("E","PREP","normal")},active:["E"],box:{visible:true,x:309,y:220},actions:{E:"折据を用意する"}});
+ add("踏込側で準備を整える","公開稽古記録には、亭主が建水と結び帛紗を踏込側に置いてから仮座につく説明があります。この画面では運搬の細部を省略しています。","道具を準備してから、亭主が仮座へ。",{moves:{E:move("E","STEP","toStep")},active:["E"],confidence:"record",refs:["R2"],actions:{E:"仮座につく前の準備"}});
+ add("亭主Eが仮座に着く","最初の札取りを始める目安として、亭主の仮座への着座が記録されています。点前座にはまだ誰もいません。","初回の札取りの合図＝亭主が仮座へ。",{chapter:1,moves:{E:move("E","V","normal")},active:["E","A"],confidence:"record",refs:["R1"],actions:{E:"仮座に着く",A:"初回の札取りに備える"},caption:"最初だけは「茶杓を取る」ではなく、亭主の仮座への着座が目安です。"});
+ for(const id of IDS){
+   add("初回の札取り · "+id+"に注目","初花を決める場面です。五人を順に強調しますが、札の授受・替札の処理・正確な回し順は省略した表示です。","自分の札と、役の決定に注意を向ける。",{active:[id],box:{x:state.people[id].x+54,y:state.people[id].y-5},cards:{[id]:true},actions:{[id]:"札に注意を向ける（表示は概略）"},duration:2400,banner:"初回の札取り · 細かな交換は省略"});
+ }
+ add("この例の初花は、A","この固定例ではAを初花にしています。花は点前をする役です。実物の札・名乗り・替札の全処理はこの画面では再現していません。","初花＝一服目を点てる人。",{roles:{A:"花"},active:["A"],box:{x:306,y:195},actions:{A:"初花として動き始める"},confidence:"record",refs:["R2","R4"],cards:{A:false,B:false,C:false,D:false,E:false},caption:"Aという人物が花の役になります。人物名と札の役名を分けて考えます。"});
+ add("初花Aが踏込側へ","初花の移動を示します。次の場面で、残りの四人が上座側へ繰り上がるところに注目してください。","初花が踏込側に着いたら、他の四人を見る。",{moves:{A:move("A","STEP","toStep")},active:["A"],actions:{A:"踏込側に進む"},refs:["R4"],confidence:"record",caption:"位置・足運びは模式ですが、初花と残る四人の動きを結びつけて覚えます。"});
+ const shiftMoves={},shiftActions={};["B","C","D","E"].forEach((id,i)=>{shiftMoves[id]=[coords("S"+i)];shiftActions[id]="一座、上座側へ繰り上がる";});
+ add("残りの四人が繰り上がる","初花が踏込側に座ったときに四人が一座ずつ上座へ移る、という公開記録を採用しています。図の移動距離・方向は仮の配置です。","初花だけでなく、四人が連動して動く。",{moves:shiftMoves,active:["B","C","D","E"],actions:shiftActions,confidence:"record",refs:["R4"],caption:"初座とは人物の並びが変わりました。A〜Eの文字を見失わないでください。"});
+ add("初花Aが点前座に着く","初花が一服目を始める位置に進みます。ここから「いま点てる人」「その茶を飲む人」「次に点てる人」を分けて追います。","いまの花と、次の花は違う。",{moves:{A:move("A","T","toT")},active:["A"],actions:{A:"一服目の点前座に着く"},bowl:{owner:null,x:650,y:366},refs:["R2"],confidence:"record"});
+ for(let r=0;r<5;r++){
+   const maker=cast.flowers[r],drinker=cast.drinkers[r],next=cast.flowers[r+1]||null;
+   const c=r+2,round=r+1,n=["一","二","三","四","五"][r]+"服目";
+   const guestHome=state.people[drinker].seat, nextHome=next?state.people[next].seat:null;
+   const role=roleReset();role[maker]="花";
+   add(n+" · "+maker+"が点前を進める","薄茶を点てる準備をまとめて示します。帛紗さばき、茶筅通し、茶巾、蓋や柄杓などの手順と左右の手は、先生の指導で復習してください。","今回の花は "+maker+"。他の四人は次の合図を見る。",{chapter:c,round,roles:role,active:[maker],actions:{[maker]:n+"を点てる準備"},bowl:{owner:null,x:650,y:365,visible:true,filled:false},box:{x:309,y:state.people[personAt("S0")||"A"].y},poses:{[maker]:"scoop"},caption:"点前の細部ではなく、五人全体が何を待っているかを確認する場面です。"});
+   const firstGuest=personAt("S0")||IDS.find(id=>id!==maker);
+   add("茶杓を取る · 札取りの合図","二回目以降の札取りを始める目安は、点前をする人が茶杓を取るとき、と記録されています。札を取る人の選定・松の処理はここでは自動判定しません。","次からの札取りの合図＝茶杓を取るとき。",{active:[maker,firstGuest],actions:{[maker]:"茶杓を取る", [firstGuest]:"札取りの合図に注意"},poses:{[maker]:"scoop"},confidence:"record",refs:["R1"],box:{x:state.people[firstGuest].x+54,y:state.people[firstGuest].y-5},caption:"この合図と、茶を出したあとの役の確認を、別の場面として覚えます。"});
+   const participants=next?[drinker,next]:[drinker];
+   for(const id of participants){
+     add("札取りに注目 · "+id,"ここでは配役の結果を固定して流れを見せます。折据の移動はこの人物への注目を示す表示です。実際には持ち札・松・替札によって授受が変わるため、その回し順は再現していません。","札の細かな扱いは省略。まだ次の役は表示しない。",{active:[id,maker],actions:{[id]:"札に注意する（交換は省略）",[maker]:"点前を進める"},cards:{[id]:true},box:{x:state.people[id].x+54,y:state.people[id].y-5},poses:{[maker]:"scoop"},duration:2400,banner:"札取りの概略 · 回し順ではありません"});
+   }
+   add(maker+"がお茶を点てる","茶筅で点てる様子を記号的な動きで示します。速度・回数・腕の角度・泡の立て方を示す実技教材ではありません。","誰が飲むか、誰が次に点てるかを待つ。",{active:[maker],actions:{[maker]:"薄茶を点てる"},poses:{[maker]:"whisk"},bowl:{filled:true,owner:null,x:650,y:365},duration:3800,caption:"点前の人だけでなく、四人の客も役の決定に備えています。"});
+   const revealRoles=roleReset();revealRoles[maker]="花";revealRoles[drinker]="月";if(next)revealRoles[next]="次花";
+   add("お茶が出る · 役を確認",next?"この一服をいただくのは"+drinker+"、次に点てるのは"+next+"という固定例です。「今の茶を飲む役」と「次の茶を点てる役」を混同しないようにします。":"最後の五服目。この一服をいただくのは"+drinker+"です。この学習例では次の点前役は設定しません。","月＝この一服を飲む人。"+(next?"次花＝次の点前役。":"五服目は終わりの流れへ。"),{roles:revealRoles,active:next?[maker,drinker,next]:[maker,drinker],cards:{[drinker]:false,...(next?{[next]:false}:{})},bowl:{owner:null,x:483,y:419,filled:true},actions:{[maker]:"茶碗を出す",[drinker]:"月の役を確認",...(next?{[next]:"次の花を確認"}:{})},confidence:"record",refs:["R1","R2"],caption:next?maker+"が出した茶を"+drinker+"が飲み、"+next+"が次を点てます。":"五服目は、茶碗を返す前の折据の動きに注意します。"});
+   if(next){
+     add("松・替札の分岐を確認","松をかける人、替札を請求する人、箱や隅かけの扱いは持ち札によって変化します。この場面は省略箇所を明示する区切りで、全員が同じ札交換をするという意味ではありません。","ここは先生の指導で補う分岐。自動再現していない。",{active:IDS,actions:Object.fromEntries(IDS.map(id=>[id,"持ち札に応じた処理（本作では省略）"])),banner:"省略区間 · 松／替札／箱の分岐",duration:4300,refs:["R2","R3"],caption:"裏千家の手順で穴埋めせず、未検証の分岐をここで区別しています。",captionTitle:"省略している手順"});
+   }
+   add(drinker+"が茶碗を受け取る","月の人が茶碗の受渡し側へ進む様子です。にじり方・札の一時移動・手の順序は描いていません。","今動くのは、月の "+drinker+"。",{active:[drinker],moves:{[drinker]:move(drinker,"RECEIVE","receive")},actions:{[drinker]:"茶碗を受け取る"},bowl:{owner:drinker},caption:"茶碗の動きと、月の人の動きを一緒に見てください。"});
+   add(drinker+"が席へ戻り、いただく","茶碗を手元に置いていただきます。喫茶の回数、茶碗を回す向き、礼や拭い方を表す動きではありません。","月が飲んでいる間にも、周囲は次に備える。",{moves:{[drinker]:move(drinker,guestHome,"seatReturn")},active:[drinker],actions:{[drinker]:n+"をいただく"},poses:{[drinker]:"drink"},bowl:{owner:drinker},duration:3700});
+   if(next){
+     add("前の花"+maker+"が仮座へ","点前をした人はいったん仮座へ。月の人は茶碗を手元に置き、次の花の着座を待つ状態を示しています。経路は学習用です。","前の花は、次の花の動きを待つ。",{moves:{[maker]:move(maker,"V","toV")},active:[maker,drinker],actions:{[maker]:"仮座に移り、次の花を待つ",[drinker]:"茶を飲み終え、茶碗を保持"},bowl:{filled:false,owner:drinker},poses:{[drinker]:"drink"}});
+     add("次の花"+next+"が動き出す","次の花が点前座へ向かいます。仮座の人は、次の花が後ろを通るのを待ってから空いた座へ移る、という稽古記録に注目します。","仮座の人は、次の花の通過を待つ。",{moves:{[next]:move(next,"STEP","toStep")},active:[next,maker],actions:{[next]:"次の点前に向かう",[maker]:"次の花が通過するのを待つ",[drinker]:"茶碗を保持する"},confidence:"record",refs:["R1"],caption:"破線の位置が正式な「後ろ」を示すのではありません。先後関係を見るための図です。"});
+     const exchangeRoles=roleReset();exchangeRoles[next]="花";exchangeRoles[drinker]="月";
+     add("花が交代 · 空いた座を埋める",next+"が点前座に着き、前の花"+maker+"は空いた客座へ戻ります。人は同じでも座が変わったことを確認してください。","新しい花が点前座へ。前の花は客座へ。",{moves:{[next]:move(next,"T","toT"),[maker]:move(maker,nextHome,"fill")},active:[next,maker],roles:exchangeRoles,actions:{[next]:"次の一服を担当",[maker]:"空いた客座に着く",[drinker]:"返却の合図を待つ"},confidence:"record",refs:["R1"],caption:"人物名A〜Eは固定です。役や客座が替わっても、同じ人物を追ってください。"});
+     add(drinker+"が茶碗を返しに出る","通常の返却の目安は、次の点前の人が点前座に着くころ、と公開稽古記録にあります。ここでは着座後に返す形に分割しています。","次の点前の人の着座を、返却の目安にする。",{moves:{[drinker]:move(drinker,"RECEIVE","receive")},active:[drinker,next],actions:{[drinker]:"茶碗を返すために進む",[next]:"茶碗の返却を受ける"},bowl:{owner:drinker,filled:false},confidence:"record",refs:["R1"]});
+     add("茶碗が戻り、次の一服へ","月の人が茶碗を置き、自分の客座へ戻る場面です。次の花が茶碗を取り込み、次の一服へ続きます。","「点前・喫茶・役替わり」がつながる。",{moves:{[drinker]:move(drinker,guestHome,"seatReturn")},active:[drinker,next],actions:{[drinker]:"客座に戻る",[next]:"次の一服を始める"},bowl:{owner:null,x:483,y:419,filled:false},roles:{[drinker]:drinker==="E"?"亭主":"客"},caption:"これで"+n+"の流れがつながりました。次の場面では新しい花に注目します。"});
+   }else{
+     add("最後の折据を収める","五服目では札の回収を伴う終盤の扱いがあります。隅かけ・回収の正確な順や手は未再現で、折据が収まるまで月の人が茶碗を保持する関係だけを示します。","最後は、いつもどおりすぐ返さない。",{active:[drinker,maker],actions:{[drinker]:"茶碗を保持し、折据を待つ",[maker]:"終盤の札の処理（概略）"},box:{x:594,y:455,angle:25},bowl:{filled:false,owner:drinker},refs:["R4"],confidence:"record",caption:"折据は回収の注目先として表示しています。隅かけの角度や順番の教則ではありません。"});
+     const shokyaku=personAt("S0");
+     add("折据が正客側へ戻る","五服目の茶碗返却は、折据が正客へ戻ったときが目安と記録されています。ここでいう正客側と、初座で正客だった人物Aを分けて追います。","五服目の返却の目安＝折据が正客側へ。",{active:[shokyaku,drinker],box:{x:state.people[shokyaku].x+54,y:state.people[shokyaku].y-7,angle:0},actions:{[shokyaku]:"正客側で折据が収まる（模式）",[drinker]:"最後の返却に移る"},confidence:"record",refs:["R1"],caption:"一〜四服目の「次の点前の人の着座」と、五服目の合図を区別します。"});
+     add(drinker+"が最後の茶碗を返す","五服目の月が茶碗を返しに出る場面です。返す位置・手の順序・札をよける扱いは省略しています。","折据が戻ったことを確認してから。",{moves:{[drinker]:move(drinker,"RECEIVE","receive")},active:[drinker],actions:{[drinker]:"五服目の茶碗を返す"},bowl:{owner:drinker,filled:false},confidence:"record",refs:["R1"]});
+     add("最後の月が客座に戻る","茶碗を置いて客座へ戻ります。五服目を点てた人が茶碗を取り込むところにつなげます。","茶碗の返却が終わり、座戻りの段階へ。",{moves:{[drinker]:move(drinker,guestHome,"seatReturn")},active:[drinker,maker],actions:{[drinker]:"客座へ戻る",[maker]:"戻った茶碗に向き合う"},bowl:{owner:null,x:650,y:365,filled:false}});
+   }
+ }
+ const lastFlower=cast.flowers[4];
+ add("茶碗が戻り、総礼","茶碗の返却後に礼をし、初めの座に戻る流れが公開稽古記録にあります。礼の深さや手の置き方は記号的な表示です。","ここで初座を思い出す。",{chapter:7,active:IDS,actions:Object.fromEntries(IDS.map(id=>[id,"総礼し、初座を確認する"])),poses:Object.fromEntries(IDS.map(id=>[id,"bow"])),confidence:"record",refs:["R4"],duration:4000});
+ const resetMoves={},resetActions={};
+ IDS.forEach((id,i)=>{
+   if(id==="E"&&lastFlower==="E"){resetActions[id]="本来の亭主として点前座に残る（概略）";return;}
+   const target=id==="E"?"V":"S"+i;
+   const end=coords(target),p=state.people[id];
+   if(p.seat!==target)resetMoves[id]=[pt(360+i*32,p.y),pt(360+i*32,620+i*12),pt(355,end.y),end];
+   resetActions[id]="最初の座へ戻る";
+ });
+ add("五人が初めの座へ戻る","初座の位置を思い出して座を戻します。"+(lastFlower==="E"?"この配役例では、本来の亭主Eが最終花のため、Eが点前座で仕舞いに続く形に簡略化しています。":"最終花の"+lastFlower+"が初座に戻り、その後に本来の亭主Eが仕舞いに向かう流れです。"),"A・B・C・Dの初座と、本来の亭主Eを確認。",{moves:resetMoves,active:IDS,actions:resetActions,roles:roleReset(),confidence:lastFlower==="E"?"model":"record",refs:lastFlower==="E"?[]:["R1","R4"],box:{visible:false},caption:"座戻りの交差・先後・左右の足は未検証のため、仮の経路で示しています。",duration:4400});
+ if(lastFlower!=="E"){
+   add("本来の亭主Eが仕舞いへ","最終花が元の座に着いた後に、本来の亭主が立って仕舞う、という稽古記録を採用しています。点前座までの経路は模式です。","最後に点てた人と、片付ける亭主を区別。",{chapter:8,moves:{E:move("E","T","toT")},active:["E"],actions:{E:"本来の亭主として仕舞いに向かう"},confidence:"record",refs:["R1"]});
+ }
+ add("亭主Eが道具を整える","仕舞いの点前をまとめて表示します。湯・水の扱い、茶筅・茶杓・棗・建水などの細かな所作の順は、このシミュレーターには含めていません。","五服が終わっても、片付けと終わりの礼がある。",{chapter:8,active:["E"],actions:{E:"仕舞いの点前（概略）"},poses:{E:"scoop"},bowl:{owner:null,x:650,y:365,filled:false}});
+ add("道具を水屋へ下げる","画面上では一度の運搬に集約します。実際の持ち出し回数・持ち方・道具の順序を再現したものではありません。","点前道具が席中から下がる。",{moves:{E:[pt(773,500),pt(773,691),coords("OE")]},active:["E"],actions:{E:"道具を下げる（運搬は集約）"},tools:false,bowl:{visible:false,owner:null},box:{visible:false},duration:3600});
+ add("亭主が戻り、終わりの礼","亭主が仮座へ戻って総礼する、という稽古記録をもとにした終わりの場面です。全員の動きがそろって終わることを意識します。","最後も五人で一座を整える。",{moves:{E:move("E","V","host")},active:IDS,actions:Object.fromEntries(IDS.map(id=>[id,"終わりの総礼"])),poses:Object.fromEntries(IDS.map(id=>[id,"bow"])),confidence:"record",refs:["R4"],duration:4200});
+ for(let i=0;i<5;i++){
+   const id=IDS[i];
+   add(id+"が席を退出する","退出の一連の動きを追えるよう、この画面では一人ずつ退出させます。この順番・経路・歩数が正式な退出作法であるという意味ではありません。","他の人の動きと間合いを意識して終える。",{moves:{[id]:id==="E"?[pt(525,730),pt(775,730),coords("OE")]:move(id,"O"+id,"exit")},active:[id],actions:{[id]:"席外へ戻る（模式）"},duration:2900});
+ }
+ add("一巡、終了","席入り、初花、五服、座戻り、仕舞い、退出までの一つの学習例が終わりました。次はA〜Eを一人選び、役と座の変化を追って復習できます。","全体 → 一人の動き → 合図の順に復習。",{active:[],actions:Object.fromEntries(IDS.map(id=>[id,"一巡の復習を終了"])),roles:roleReset(),caption:"正式な所作は先生と照合。記録ベースの部分と模式部分を分けて覚えてください。",captionTitle:"次の復習",duration:5000});
+ return steps;
+}
+
+Object.assign(SOURCES,{
+ K0:{label:"表千家不審菴・後座",url:"https://www.omotesenke.jp/list5/list5-3/list5-3-4/"},
+ K1:{label:"表千家不審菴・茶会の準備",url:"https://www.omotesenke.jp/list5/list5-2/list5-2-1/"},
+ K2:{label:"啓庵・炉の濃茶の要点（丸卓）",url:"https://keian.fc2.net/blog-entry-224.html"},
+ K3:{label:"頼真庵・使い帛紗と出し帛紗",url:"https://raishin-an.jp/archives/65"},
+ K4:{label:"個人の復習記録・表千家 炉 濃茶 運び",url:"https://london-kyoto.blogspot.com/2016/10/blog-post_73.html"},
+ K5:{label:"啓庵・表千家資格者講習会の記録",url:"https://keian.fc2.net/blog-entry-959.html"}
+});
+
+
+const KOICHA_CHAPTERS=["準備・席入り","運び・総礼","道具を清める","中蓋・茶筅通し","濃茶を練る","喫茶・中仕舞い","茶碗の拝見","仕舞い","三器の拝見","納め・退出"];
+function buildKoicha(){
+ const steps=[], K={bowl:[650,365],chaire:[747,341],shifuku:[790,368],chasen:[696,322],chashaku:[749,385],chakin:[752,240],fukusa:[559,389],kensui:[570,482],hishaku:[735,445],futaoki:[550,319],lid:[550,319]};
+ let state={people:{},box:{x:309,y:220,visible:false,angle:0},bowl:{x:913,y:635,visible:false,filled:false,owner:null,liquid:"empty"},cloth:{x:913,y:645,visible:false,owner:null},tools:false,active:[],round:0,chapter:0,banner:"濃茶の始まり",koicha:true,water:true,kamaClosed:true,extras:{},toolFocus:[]};
+ IDS.forEach((id,i)=>state.people[id]={...coords("O"+id),role:id==="E"?"亭主":["正客","次客","三客","末客"][i],action:"席外で待機",pose:"idle",hasCard:false});
+ Object.entries(K).forEach(([id,p])=>{if(id!=="bowl")state.extras[id]={x:p[0],y:p[1],visible:false,owner:null};});
+ state.extras.chaire.visible=true;state.extras.shifuku={x:747,y:341,visible:true,owner:null};
+ function add(title,desc,cue,opt={}){
+   IDS.forEach(id=>{state.people[id].pose="idle";state.people[id].action=state.people[id].seat.startsWith("O")?"席外で待機":id==="E"?"客の様子と道具に気を配る":"亭主と連客の進行を見守る";});
+   state.active=opt.active||[];state.toolFocus=opt.toolFocus||[];
+   if(opt.chapter!==undefined)state.chapter=opt.chapter;
+   if(opt.actions)Object.entries(opt.actions).forEach(([id,a])=>state.people[id].action=a);
+   if(opt.poses)Object.entries(opt.poses).forEach(([id,a])=>state.people[id].pose=a);
+   if(opt.moves)Object.entries(opt.moves).forEach(([id,path])=>Object.assign(state.people[id],path[path.length-1]));
+   if(opt.bowl)Object.assign(state.bowl,opt.bowl);
+   if(opt.cloth)Object.assign(state.cloth,opt.cloth);
+   if(opt.water!==undefined)state.water=opt.water;
+   if(opt.kamaClosed!==undefined)state.kamaClosed=opt.kamaClosed;
+   if(opt.extras)Object.entries(opt.extras).forEach(([id,p])=>Object.assign(state.extras[id],p));
+   for(const prop of [state.bowl,state.cloth,...Object.values(state.extras)]){
+     if(prop.owner){const p=state.people[prop.owner],isCloth=prop===state.cloth;
+       prop.x=p.x+(p.a===90?40:0);prop.y=p.y+(p.a===90?-4:-45)+(isCloth?22:0);
+     }
+   }
+   state.banner=opt.banner||title;
+   steps.push({id:"koicha-"+steps.length,title,desc,cue,confidence:opt.confidence||"model",refs:opt.refs||[],caption:opt.caption||cue,captionTitle:opt.captionTitle||"ここを覚える",moves:opt.moves||{},duration:opt.duration||3500,scene:clone(state)});
+ }
+ const move=(id,to,kind)=>routeTo(id,to,kind,state);
+ const ex=(id,visible=true)=>({[id]:{x:K[id][0],y:K[id][1],visible,owner:null}});
+ const allActions=s=>Object.fromEntries(IDS.map(id=>[id,s]));
+ const allPoses=s=>Object.fromEntries(IDS.map(id=>[id,s]));
+ add("濃茶 · 一碗を中心に学ぶ","炉・棚なしを想定した概略です。Eが亭主、A〜Dが客。花月と違い、役は交代しません。今回は濃茶だけの稽古として終わりまで示します。","人物の役を固定して、道具の変化を追う。",{refs:["K0","K1"],confidence:"official",duration:5000,caption:"正式な席配置・足運び・手の左右を再現するものではありません。"});
+ add("水屋で準備し、水指と茶入を整える","仕覆に入れた茶入と水指が準備された状態から始めます。菓子・湯・清掃などの水屋仕事は画面外で済んだ設定です。","使い帛紗と出し帛紗は別の道具。",{refs:["K0","K3"],confidence:"official",toolFocus:["chaire","shifuku"],caption:"茶・湯の量や温度の指南ではありません。仕覆は茶入に重ねて表示しています。"});
+ for(let i=0;i<4;i++){
+   const id=IDS[i];
+   add(id+" · "+state.people[id].role+"が着座","入室時の細かな拝見や礼は省略した、客席への導入です。濃茶ではこの役を最後まで保ちます。","A＝正客、B＝次客、C＝三客、D＝末客。",{moves:{[id]:move(id,"S"+i,"enter")},active:[id],actions:{[id]:"自分の客座につく"},duration:3000});
+ }
+ add("亭主Eが茶碗を運ぶ","亭主側の稽古は、茶碗を持ち出すところから追います。茶碗に仕組む小道具は描画を簡略化しています。","まずは茶碗の場所を見る。",{chapter:1,moves:{E:move("E","T","host")},active:["E"],actions:{E:"茶碗を持ち出す"},bowl:{visible:true,owner:"E"},refs:["K4"],confidence:"record"});
+ add("茶碗と茶入を置き合わせる","二つの道具を据えた状態です。画面の距離・左右・畳目は正式な置合せではありません。","道具を出す段階と、清める段階を分ける。",{active:["E"],bowl:{owner:null,x:650,y:365},actions:{E:"茶碗を置き合わせる"},toolFocus:["chaire"]});
+ add("亭主が建水を取りに下がる","運びの流れが見えるよう、いったん水屋へ下がる場面を分けました。","運び出しは、一度で全部を持ってくるのではない。",{active:["E"],moves:{E:[pt(773,500),pt(773,691),coords("OE")]},actions:{E:"建水などを用意する"}});
+ add("建水・柄杓・蓋置を運ぶ","建水と、それに伴う道具の持ち出しを示します。持ち方や重なりを示す図ではありません。","点前座の道具が揃う。",{active:["E"],moves:{E:move("E","T","host")},actions:{E:"建水・柄杓・蓋置を運ぶ"},extras:{kensui:{visible:true,owner:"E"},hishaku:{visible:true,owner:"E"},futaoki:{visible:true,owner:"E"}}});
+ add("道具を置き、総礼","点前開始の区切りです。道具の姿勢と主客の礼を分けて復習できるよう、一場面にまとめました。","点前が始まることを、主客で共有する。",{active:IDS,actions:allActions("点前開始の礼"),poses:allPoses("bow"),extras:{...ex("kensui"),...ex("hishaku"),...ex("futaoki")},refs:["K4"],confidence:"record"});
+ add("茶入を取り、仕覆を脱がせる","仕覆に包まれていた茶入を扱う段階です。紐の解き方や打返しは、実物で習った内容を場面メモに記録してください。","仕覆 → 茶入 → 茶杓、と注目を移す。",{chapter:2,active:["E"],actions:{E:"仕覆を脱がせる"},extras:{...ex("shifuku")},toolFocus:["shifuku","chaire"],refs:["K4"],confidence:"record"});
+ add("使い帛紗で茶入を清める","使い帛紗の役割を確認します。清め方や男女による扱いの差はアニメーションで指定していません。","この帛紗は、客へ添える出し帛紗とは別。",{active:["E"],actions:{E:"茶入を清める"},poses:{E:"clean"},extras:{fukusa:{x:730,y:342,visible:true}},toolFocus:["chaire","fukusa"],refs:["K3"],confidence:"record"});
+ add("茶杓を清める","ここでは茶杓を清める段階を独立させています。帛紗さばきや拭く回数の教則ではありません。","茶入を扱った後、茶杓へ。",{active:["E"],actions:{E:"茶杓を清める"},poses:{E:"clean"},extras:{...ex("chashaku"),fukusa:{x:731,y:385,visible:true}},toolFocus:["chashaku","fukusa"],refs:["K3","K4"],confidence:"record"});
+ add("茶筅・茶巾を整える","茶碗から必要な道具を出し、茶筅通しの準備へ進みます。水指の蓋の素材による扱い分けは省略しています。","茶碗を使う準備を整える。",{active:["E"],actions:{E:"茶筅と茶巾を整える"},extras:{...ex("chasen"),...ex("chakin"),...ex("fukusa")},toolFocus:["chasen","chakin"]});
+ add("茶筅通しの湯を入れる","釜を開け、茶碗に湯を入れるところです。湯量・柄杓の握り方・釜の蓋の取り方は記号的な表示です。","この後の「中蓋」に注目。",{chapter:3,active:["E"],actions:{E:"茶碗に湯を入れる"},poses:{E:"scoop"},kamaClosed:false,bowl:{liquid:"water"},extras:{...ex("lid"),hishaku:{x:650,y:340}},toolFocus:["hishaku"]});
+ add("中蓋 · いったん釜の蓋をする","炉の濃茶の要点として、茶筅通しに移る前の中蓋を独立表示します。手の順は、先生の指導を優先してください。","中蓋＝茶筅通しに向かう、この段階。",{active:["E"],actions:{E:"中蓋をする"},kamaClosed:true,extras:{...ex("lid",false),...ex("hishaku")},refs:["K2"],confidence:"record",caption:"後の「中仕舞い」とは別です。似た名前を、進行の場所で覚えます。"});
+ add("茶筅通し","茶筅と茶碗の準備をする段階です。動きは低速の記号表現で、上げる回数や打つ回数を教えるものではありません。","点てる前の茶筅通し。",{active:["E"],actions:{E:"茶筅通しをする"},poses:{E:"rinse"},extras:{chasen:{x:650,y:348}},toolFocus:["chasen"]});
+ add("湯を建水へあける","準備に使った湯を建水へ移す関係を示します。手や茶碗を傾ける角度は未再現です。","茶碗を空にして、次の清めへ。",{active:["E"],actions:{E:"湯を建水へあける"},bowl:{x:591,y:459,liquid:"empty"},extras:{...ex("chasen")},toolFocus:["kensui"]});
+ add("茶巾で茶碗を清める","茶碗を清めて、茶を入れられる状態にします。茶巾の折り方と拭き方は実物で復習してください。","茶碗の準備が整ってから、茶を入れる。",{active:["E"],actions:{E:"茶碗を清める"},poses:{E:"clean"},bowl:{x:650,y:365},extras:{chakin:{x:650,y:354}},toolFocus:["chakin"]});
+ add("茶入から茶を入れる","茶杓と茶入を使って茶碗へ茶を移す段階です。人数分の具体的な分量、すくう回数は指定していません。","今度は「濃茶を練る」準備。",{chapter:4,active:["E"],actions:{E:"茶を茶碗へ移す"},poses:{E:"scoop"},bowl:{liquid:"powder"},extras:{...ex("chakin"),chashaku:{x:678,y:354},chaire:{x:720,y:362}},toolFocus:["chashaku","chaire"],refs:["K4"],confidence:"record"});
+ add("茶を整え、道具を戻す","茶を入れた後、茶入と茶杓を整えるところです。茶入を回す回数や茶杓の置く向きは図から暗記しないでください。","茶が茶碗に入り、次は湯。",{active:["E"],actions:{E:"茶と道具を整える"},extras:{...ex("chaire"),...ex("chashaku")}});
+ add("釜を開け、練るための湯を入れる","中蓋をした釜を再び開けて、茶碗へ湯を加える段階です。画面の液面は量を示していません。","茶を湯でなじませ、練る。",{active:["E"],actions:{E:"湯を加える"},poses:{E:"scoop"},kamaClosed:false,extras:{...ex("lid"),hishaku:{x:650,y:338}},bowl:{liquid:"koicha",filled:true},toolFocus:["hishaku"]});
+ add("濃茶を練る","茶が均一になっていく様子を、ゆっくりした動きで表します。実際の力加減や速さは、この動きから学ぶ対象ではありません。","泡立てる図ではなく、練る段階を追う。",{active:["E"],actions:{E:"濃茶を練る"},poses:{E:"knead"},extras:{...ex("hishaku"),chasen:{x:650,y:349}},toolFocus:["chasen"],duration:4500,refs:["K1"],confidence:"official"});
+ add("湯を調整し、練り上げる","仕上がりを整える段階を分けて表示しています。濃さ・湯温・量は先生に見てもらって確かめてください。","練り始めと、仕上げを分けて覚える。",{active:["E"],actions:{E:"湯と練り具合を整える"},poses:{E:"knead"},toolFocus:["chasen"],duration:4200,refs:["K1"],confidence:"official"});
+ add("茶碗と出し帛紗を出す","練り上げた茶碗と、客に添える出し帛紗を示します。使い帛紗は点前側に残っています。","使い帛紗と出し帛紗を、画面で見分ける。",{active:["E","A"],actions:{E:"濃茶と出し帛紗を出す",A:"濃茶を受ける準備"},extras:{...ex("chasen")},bowl:{x:483,y:419,owner:null},cloth:{visible:true,x:483,y:466,owner:null},refs:["K3"],confidence:"record",caption:"この図の並べ方・わさの向きは模式です。"});
+ add("正客Aが茶碗と出し帛紗を受ける","正客が受け取りに出る場面です。持ち帰りの手順を二つの動く記号に集約しています。","最初に受けるのは正客A。",{chapter:5,active:["A"],moves:{A:move("A","RECEIVE","receive")},actions:{A:"茶碗と出し帛紗を受ける"},bowl:{owner:"A"},cloth:{owner:"A"}});
+ add("正客Aが自席へ戻る","一碗を順にいただく例です。客側の礼、飲み口を避ける動作、口を清める方法などは省略しています。","花月と違い、ここでは役は替わらない。",{active:["A"],moves:{A:move("A","S0","seatReturn")},actions:{A:"自席で濃茶をいただく準備"},bowl:{owner:"A"},cloth:{owner:"A"},refs:["K0","K5"],confidence:"record"});
+ add("正客Aがいただく","出し帛紗を用いて茶碗をいただく段階です。口数や角度は再現していません。","亭主は、客がいただく様子に注意を向ける。",{active:["A","E"],actions:{A:"濃茶をいただく",E:"正客の様子を見る"},poses:{A:"drink"},bowl:{owner:"A"},cloth:{owner:"A"},refs:["K0","K5"],confidence:"record"});
+ add("亭主が服加減をうかがう","正客の一口のあとに服加減をうかがう、という表千家教室の記録を参考に、問答の区切りを置きます。","点前だけでなく、客の様子が合図になる。",{active:["E","A"],actions:{E:"服加減をうかがう",A:"亭主に応じる"},refs:["K2"],confidence:"record"});
+ add("中仕舞い · 釜を閉め、客へ心を向ける","釜・柄杓・蓋置をいったん納める段階です。配置の図は正式な中仕舞いの形ではありません。","中仕舞い＝客が濃茶をいただく間の区切り。",{active:["E"],actions:{E:"中仕舞いをする"},kamaClosed:true,extras:{...ex("lid",false),hishaku:{x:570,y:480},futaoki:{x:537,y:503}},refs:["K2"],confidence:"record",caption:"先ほどの「中蓋」は茶筅通し前。こちらは喫茶中です。"});
+ add("茶銘・詰などを尋ねる","正客と亭主の問答の場面を示します。発話の一字一句やすべての礼を固定したものではありません。","茶をいただくことと、問答はつながっている。",{active:["A","E"],actions:{A:"茶について尋ねる",E:"問答に答える"},refs:["K0"],confidence:"official"});
+ for(let i=1;i<4;i++){
+   const prev=IDS[i-1],id=IDS[i];
+   add(prev+"から"+id+"へ、一碗をつなぐ","茶碗と出し帛紗が次の客へ渡ることを示します。実際の授受の手・向き・拭い方は省略しています。","次の客へ、茶碗と出し帛紗が移る。",{active:[prev,id],actions:{[prev]:"次客へつなぐ",[id]:"茶碗と出し帛紗を受ける"},bowl:{owner:id},cloth:{owner:id},refs:["K0"],confidence:"official"});
+   add(state.people[id].role+id+"がいただく","一碗を順にいただく学習例です。実際の稽古の喫茶方法は教室の衛生方針に従ってください。","亭主Eは交代しない。",{active:[id,"E"],actions:{[id]:"濃茶をいただく",E:"連客の様子を見守る"},poses:{[id]:"drink"},bowl:{owner:id},cloth:{owner:id},refs:["K0"],confidence:"official"});
+ }
+ add("末客Dが飲み終える","最後の客の飲み終わりが、亭主側の次の動きに関わるところを見ます。","全員の喫茶が終わることが、次の合図。",{active:["D","E"],actions:{D:"濃茶を飲み終える",E:"末客の様子を確かめる"},bowl:{filled:false,liquid:"empty"},refs:["K2"],confidence:"record"});
+ add("亭主が中仕舞いを解く","末客の飲み終わりを見て、再び点前側を整える段階です。水指・茶巾・釜の細かな扱いはまとめています。","客の拝見と、亭主の仕舞い準備が並行する。",{chapter:6,active:["E"],actions:{E:"中仕舞いを解き、仕舞いに備える"},kamaClosed:false,extras:{...ex("lid"),...ex("hishaku"),...ex("futaoki"),chakin:{x:550,y:319}},refs:["K2"],confidence:"record"});
+ add("茶碗と出し帛紗が正客側へ戻る","喫茶のあと、拝見に移るための返却をまとめて表示しています。出会いの足運びや手の順は未再現です。","喫茶 → 茶碗・出し帛紗の拝見。",{active:["D","A"],actions:{D:"正客側へ返す（模式）",A:"拝見の準備をする"},bowl:{owner:"A"},cloth:{owner:"A"},refs:["K4"],confidence:"record"});
+ for(let i=0;i<4;i++){
+   const id=IDS[i];
+   add(state.people[id].role+id+"の拝見 · 茶碗と出し帛紗","この一場面では二つの拝見をまとめています。実際にはそれぞれを扱うため、同時に持ち上げるという意味ではありません。","ここではまだ三器ではなく、茶碗と出し帛紗。",{active:[id],actions:{[id]:"茶碗・出し帛紗を拝見（集約）"},bowl:{owner:id},cloth:{owner:id},poses:{[id]:"inspect"},refs:["K4"],confidence:"record"});
+ }
+ add("末客から正客へ返す","拝見の後、正客が返却に備える状態へつなげます。二人の出会いは省略した移動表示です。","正客が、亭主へ返す準備をする。",{active:["D","A"],actions:{D:"拝見物を正客へ返す",A:"返却のため改める"},bowl:{owner:"A"},cloth:{owner:"A"}});
+ add("正客が茶碗と出し帛紗を返す","正客が返却位置へ進みます。画面の動線や返す位置は学習用です。","茶碗が亭主側へ戻る。",{active:["A"],moves:{A:move("A","RECEIVE","receive")},actions:{A:"茶碗と出し帛紗を返す"},bowl:{owner:"A"},cloth:{owner:"A"}});
+ add("正客が戻り、亭主が取り込む","出し帛紗を納め、茶碗を取り込んだ後の総礼を一つの場面にまとめます。","ここから仕舞いへ。",{chapter:7,moves:{A:move("A","S0","seatReturn")},active:IDS,actions:allActions("茶碗が戻った区切りの礼"),poses:allPoses("bow"),bowl:{owner:null,x:650,y:365},cloth:{owner:null,visible:false},refs:["K4"],confidence:"record"});
+ add("湯で茶碗をすすぐ","茶碗をすすぐ段階を示します。道具は作法だけでなく、使った後に整える対象でもあります。","先に、濃茶の残った茶碗をすすぐ。",{active:["E"],actions:{E:"湯で茶碗をすすぐ"},poses:{E:"rinse"},bowl:{liquid:"water"},extras:{hishaku:{x:650,y:339}}});
+ add("仕舞いの挨拶","茶碗をすすいだ後、仕舞いの挨拶へ進む形を示しています。挨拶の言い方は稽古場での指導を優先してください。","すすぐ → 仕舞いの挨拶 → 水の茶筅通し。",{active:["E","A"],actions:{E:"仕舞いの挨拶",A:"挨拶を受ける"},poses:{E:"bow",A:"bow"},bowl:{liquid:"empty"},extras:{...ex("hishaku")},refs:["K4"],confidence:"record"});
+ add("水で茶筅通し","初めの湯での準備と、終わりの水での片付けを区別します。回数や打ち方は未収録です。","同じ名前でも、始めと終わりで目的が違う。",{active:["E"],actions:{E:"終わりの茶筅通し"},poses:{E:"rinse"},bowl:{liquid:"water"},extras:{chasen:{x:650,y:350}}});
+ add("茶巾・茶筅を納め、茶杓を清める","茶碗の中へ道具を戻すことと、茶杓を清めることをまとめています。運搬用の仕組みの細部は省略しています。","道具を使う状態から、納める状態へ。",{active:["E"],actions:{E:"小道具を整える"},poses:{E:"clean"},bowl:{liquid:"empty"},extras:{chasen:{visible:false},chakin:{visible:false},fukusa:{x:730,y:385}},toolFocus:["chashaku"]});
+ add("釜と水指を納める","釜への水、蓋などの仕舞いを概略で示します。水の回数・柄杓の動作・蓋の扱いは含みません。","片付けが進み、拝見所望につながる。",{active:["E"],actions:{E:"釜・水指を納める"},kamaClosed:true,extras:{...ex("lid",false),...ex("hishaku"),...ex("fukusa")},refs:["K4"],confidence:"record"});
+ add("正客が三器の拝見を所望する","ここからは茶入・茶杓・仕覆の拝見です。先ほどの茶碗と出し帛紗の拝見とは区別します。","三器＝茶入・茶杓・仕覆。",{chapter:8,active:["A","E"],actions:{A:"三器の拝見を所望",E:"所望を受ける"},refs:["K0"],confidence:"official",toolFocus:["chaire","chashaku","shifuku"]});
+ add("亭主が茶入を整え、拝見に出す","茶入を拝見に出す段階です。胴・口・蓋の扱いや男女の差を一つの所作として決めつけない表示です。","茶入から、拝見の準備をする。",{active:["E"],actions:{E:"茶入を拝見に出す"},poses:{E:"clean"},extras:{chaire:{x:453,y:380},fukusa:{x:445,y:385}},refs:["K4"],confidence:"record"});
+ add("茶杓と仕覆を添え、三器を出す","三器が客側へ出された状態です。正しい並べ方・向きの教則ではなく、拝見対象の区別を表します。","客に渡るのは、この三つ。",{active:["E","A"],actions:{E:"三器を出す",A:"亭主の退出を待つ"},extras:{chashaku:{x:487,y:413},shifuku:{x:530,y:441},...ex("fukusa",false)},refs:["K0"],confidence:"official"});
+ add("亭主が建水などを下げる","道具を下げることと客の拝見が並行する区間です。理解のために時間を分けて表示しています。","亭主が下がり、客の拝見へ。",{active:["E"],moves:{E:[pt(773,500),pt(773,691),coords("OE")]},actions:{E:"建水・柄杓・蓋置を下げる"},extras:{kensui:{owner:"E"},hishaku:{owner:"E"},futaoki:{owner:"E"}}});
+ add("正客が三器を取り込む","客側の扱いをまとめて表示します。三器を同時に一つの手で持ち運ぶ、という意味ではありません。","拝見物の取り込みは動きを集約した表示。",{active:["A"],actions:{A:"三器を取り込む（集約）"},extras:{chaire:{x:298,y:188},chashaku:{x:325,y:220},shifuku:{x:305,y:255},kensui:{visible:false},hishaku:{visible:false},futaoki:{visible:false}}});
+ add("亭主が茶碗を下げる","茶碗を持ち帰る運搬を一つの場面にまとめています。往復の歩数を示すものではありません。","点前座から茶碗が下がる。",{active:["E"],actions:{E:"茶碗を下げる（往復は集約）"},bowl:{visible:false,owner:null}});
+ add("亭主が水指を下げる","棚なしを想定して、水指を下げた状態につなげます。棚物では同じ画面を当てはめないでください。","今回の設定は、炉・棚なしの概略。",{active:["E"],actions:{E:"水指を下げる（往復は集約）"},water:false});
+ for(let i=0;i<4;i++){
+   const id=IDS[i],p=state.people[id];
+   add(state.people[id].role+id+"の拝見 · 三器","茶入、茶杓、仕覆に目を向ける段階です。三つは順に扱いますが、この画面では一場面にまとめています。","茶入・茶杓・仕覆を、別のものとして見る。",{active:[id],actions:{[id]:"三器を順に拝見（集約）"},poses:{[id]:"inspect"},extras:{chaire:{x:p.x+48,y:p.y-32},chashaku:{x:p.x+75,y:p.y},shifuku:{x:p.x+55,y:p.y+35}},refs:["K0"],confidence:"official"});
+ }
+ add("三器が正客側へ戻る","末客から正客へ返すところを模式化しています。出会いの実技は先生と照合してください。","正客が改めて、返却へ。",{active:["D","A"],actions:{D:"三器を正客へ返す",A:"返却のため改める"},extras:{chaire:{x:298,y:188},chashaku:{x:325,y:220},shifuku:{x:305,y:255}}});
+ add("正客が三器を返す","返却位置へ三器が戻る動きです。持ち方と回数は集約しています。","拝見物が亭主側へ戻る。",{active:["A"],actions:{A:"三器を返す（運搬は集約）"},extras:{chaire:{x:453,y:380},chashaku:{x:487,y:413},shifuku:{x:530,y:441}}});
+ add("亭主が戻り、道具の問答","返された三器の前で、正客と亭主が道具について応じる区切りです。","片付けるだけでなく、道具をめぐる問答も。",{chapter:9,active:["E","A"],moves:{E:move("E","T","host")},actions:{E:"道具について答える",A:"道具について尋ねる"},refs:["K4"],confidence:"record"});
+ add("三器を納め、水屋へ","道具を持って下がる段階です。手の割り当て・重ね方は示していません。","拝見に出した道具まで納まる。",{active:["E"],moves:{E:[pt(773,500),pt(773,691),coords("OE")]},actions:{E:"三器を納める"},extras:{chaire:{owner:"E"},chashaku:{owner:"E"},shifuku:{owner:"E"}}});
+ add("濃茶の稽古を結ぶ","道具を下げ、茶道口で終える区切りを示します。襖の開閉や礼の深さは省略しています。","濃茶の稽古の区切り。茶事全体の終了ではない。",{active:IDS,actions:allActions("濃茶の稽古を結ぶ"),poses:allPoses("bow"),extras:{chaire:{visible:false,owner:null},chashaku:{visible:false,owner:null},shifuku:{visible:false,owner:null}},refs:["K0"],confidence:"official",caption:"茶事では濃茶の後に後炭・薄茶へ続きます。この教材では濃茶だけを練習します。"});
+ for(let i=0;i<4;i++){
+   const id=IDS[i];
+   add(id+"が稽古席を離れる","濃茶だけの稽古が終わった学習用の退室場面です。正式な茶事の退出手順ではありません。","今日の濃茶の復習を終える。",{active:[id],moves:{[id]:move(id,"O"+id,"exit")},actions:{[id]:"稽古席を退出（模式）"},duration:2800});
+ }
+ add("濃茶、一巡の復習が終了","運ぶ・清める・練る・いただく・拝見・仕舞いを一つにつなぎました。次は中蓋と中仕舞い、二種類の拝見を区別して復習します。","「順番」と「なぜ今動くか」を結びつける。",{actions:allActions("復習を終了"),caption:"画面上の手・足・距離・向きを正式な点前として暗記しないでください。",captionTitle:"先生と照合して使う",duration:5000});
+ return steps;
+}
+
+
+/* UI and animation engine. No network requests or third-party dependencies. */
+const DEFAULT_COURSE="kagetsu";
+const STORAGE_KEY="omotesenke-study-v2";
+let stored={version:2,notes:{},done:{},last:{},course:DEFAULT_COURSE,scenario:"standard"};
+let storageOK=true;
+try{const raw=localStorage.getItem(STORAGE_KEY);if(raw){const v=JSON.parse(raw);if(v&&v.version===2){stored={...stored,...v,notes:v.notes||{},done:v.done||{},last:v.last||{}};}}}
+catch(e){storageOK=false;}
+let course=(location.hash==="#koicha"?"koicha":location.hash==="#kagetsu"?"kagetsu":stored.course);
+if(!["kagetsu","koicha"].includes(course))course=DEFAULT_COURSE;
+let scenario=SCENARIOS[stored.scenario]?stored.scenario:"standard";
+let steps=[],chapters=[],index=0,focus=null,playing=false,animating=false,elapsed=0,moveElapsed=0,moveDuration=1350;
+let renderScene=null,fromScene=null,toScene=null,activePaths={},lastFrame=0,rate=1,quizIndex=0,quizCorrect=0,quizAnswered=0,quizLocked=false;
+const reducedMotion=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const els={};
+const svg=(tag,attrs={},parent=null)=>{const e=document.createElementNS(SVG_NS,tag);for(const[k,v]of Object.entries(attrs))e.setAttribute(k,v);if(parent)parent.appendChild(e);return e;};
+const text=(id,value)=>{const e=$(id);if(e)e.textContent=value;};
+const escapeHTML=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function toast(message){text("toast",message);$("toast").classList.add("visible");clearTimeout(toast.timer);toast.timer=setTimeout(()=>$("toast").classList.remove("visible"),2800);}
+function persist(){stored.course=course;stored.scenario=scenario;stored.last[course+"-"+scenario]=index;try{localStorage.setItem(STORAGE_KEY,JSON.stringify(stored));storageOK=true;}catch(e){storageOK=false;}text("saveStatus",storageOK?"このブラウザ内に保存します。外部への送信はありません。":"端末内保存が使えません。下の「書き出す」でメモを保存できます。");}
+function drawMats(){
+ const rects=[[150,110,340,170],[490,110,340,170],[150,280,170,340],[320,280,340,170],[660,280,170,340],[320,450,340,170],[150,620,340,170],[490,620,340,170]];
+ rects.forEach(([x,y,w,h],i)=>{svg("rect",{x,y,width:w,height:h,fill:w>h?"url(#tatamiWeave)":"url(#tatamiWeaveV)",stroke:"#9a9f78","stroke-width":1},$("mats"));
+  if(w>h){svg("rect",{x,y,width:w,height:9,fill:"url(#heri)"},$("mats"));svg("rect",{x,y:y+h-9,width:w,height:9,fill:"url(#heri)"},$("mats"));}
+  else{svg("rect",{x,y,width:9,height:h,fill:"url(#heri)"},$("mats"));svg("rect",{x:x+w-9,y,width:9,height:h,fill:"url(#heri)"},$("mats"));}
+ });
+ for(const k of ["S0","S1","S2","S3","V","T"]){
+  const p=POS[k];svg("ellipse",{cx:p.x,cy:p.y+5,rx:39,ry:34,fill:"none",stroke:"#788b62","stroke-width":1,"stroke-dasharray":"3 5",opacity:.35},$("seatGuides"));
+  const t=svg("text",{x:p.x,y:p.y+61,"text-anchor":"middle",class:"room-mini","data-seat":k},$("seatGuides"));t.textContent=k==="T"?"点前座":k==="V"?"仮座":"客座";
+ }
+}
+function drawPeople(){
+ const raw=$("personShape").innerHTML;
+ for(const p of PEOPLE){
+   const g=svg("g",{class:"svg-person",tabindex:0,role:"button","aria-label":p.id+"を追跡","data-person":p.id},$("people"));
+   g.style.setProperty("--coat",p.color);g.style.setProperty("--obi",p.obi);
+   const ring=svg("ellipse",{class:"active-ring",cx:0,cy:8,rx:43,ry:41,fill:"none",stroke:p.color,"stroke-width":3},g);
+   svg("ellipse",{class:"outline",cx:0,cy:8,rx:48,ry:47,fill:"none",stroke:"#a27b3b","stroke-width":2,"stroke-dasharray":"3 4"},g);
+   const f=svg("g",{class:"figure"},g);f.innerHTML=raw;
+   const badge=svg("g",{class:"id-badge"},g);
+   svg("circle",{cx:-31,cy:31,r:13,fill:p.color,stroke:"#fbf9ed","stroke-width":2},badge);
+   const id=svg("text",{x:-31,y:36,"text-anchor":"middle",class:"figure-id"},badge);id.textContent=p.id;
+   const bg=svg("g",{class:"svg-badge",transform:"translate(13,-44)"},g);
+   svg("rect",{x:-4,y:-12,width:46,height:22,rx:5,class:"svg-role-bg"},bg);
+   const label=svg("text",{x:19,y:3,"text-anchor":"middle"},bg);label.textContent="客";
+   const name=svg("text",{x:0,y:67,"text-anchor":"middle",class:"person-tag"},g);
+   name.textContent=p.id;
+   const choose=()=>{focus=focus===p.id?null:p.id;updatePeoplePanel();paintScene(renderScene);updateFlowFocus();};
+   g.addEventListener("click",choose);g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();choose();}});
+   const row=document.createElement("button");row.className="person-row";row.id="person-row-"+p.id;
+   row.innerHTML=`<span class="person-id" style="background:${p.color}">${p.id}</span><span class="person-detail"><strong></strong><span></span></span><span class="person-role"></span>`;
+   row.addEventListener("click",choose);$("personList").appendChild(row);
+   els[p.id]={g,figure:f,badge:bg,label,name,row};
+ }
+}
+const toolDrawings={
+ chaire:`<ellipse cy="6" rx="17" ry="21" fill="#704d2f" stroke="#4d3523" stroke-width="2"/><path d="M-14 -7L-10 -17H10L14 -7" fill="#6f4b30"/><ellipse cy="-15" rx="12" ry="5" fill="#e4d6b4" stroke="#b6a47d"/><path d="M-9 2Q-5 18 4 21" fill="none" stroke="#a78150" opacity=".5" stroke-width="3"/>`,
+ shifuku:`<path d="M-14 -10Q-23 3-17 18Q0 27 17 18Q23 3 14 -10Z" fill="#b59963" stroke="#856a42"/><path d="M-13 -8Q0 -3 13 -8M-16 4L0 15L16 4M-13 13L0 22L13 13" fill="none" stroke="#e3d3a7" stroke-width="2"/><path d="M-12 -8Q-17 -24-4 -16Q0 -9 4 -16Q17 -24 12 -8L19 -2M-12 -8L-18 0" fill="none" stroke="#5f6348" stroke-width="2.5"/>`,
+ chasen:`<path d="M-15 19L-7 -12H7L15 19Q0 26-15 19Z" fill="#d5b465" stroke="#927a42"/><path d="M-10 18L-4 -11M-4 21L-1 -11M4 21L2 -11M10 18L5 -11" stroke="#947a3f"/><rect x="-5" y="-26" width="10" height="17" rx="3" fill="#b6a264"/>`,
+ chashaku:`<path d="M-24 1L24 0Q34 -1 32 -9" fill="none" stroke="#b79b5c" stroke-width="4" stroke-linecap="round"/>`,
+ chakin:`<rect x="-16" y="-10" width="32" height="22" rx="2" fill="#f8f3df" stroke="#c5bfa6"/><path d="M-12 -3H12M-12 5H12M0 -8V10" stroke="#d9d4be"/>`,
+ fukusa:`<path d="M-17 -12L14 -16L18 13L-13 16Z" fill="#776182" stroke="#59455f"/><path d="M-16 -11L3 2L17 12M-13 15L3 2" fill="none" stroke="#a790ac"/>`,
+ kensui:`<ellipse cy="4" rx="26" ry="23" fill="#77715c" stroke="#565341" stroke-width="2"/><ellipse cy="-2" rx="25" ry="20" fill="#a09c82"/><ellipse cy="-2" rx="19" ry="15" fill="#626b55"/>`,
+ hishaku:`<path d="M-24 25L20 -17" stroke="#b89b58" stroke-width="5"/><ellipse cx="24" cy="-22" rx="13" ry="12" fill="#c8b071" stroke="#99834b" stroke-width="2"/><ellipse cx="24" cy="-23" rx="8" ry="7" fill="#dac88f"/>`,
+ futaoki:`<ellipse cy="4" rx="12" ry="10" fill="#726c45"/><path d="M-12 -6V5Q0 14 12 5V-6" fill="#a8aa72" stroke="#6f734b"/><ellipse cy="-6" rx="12" ry="8" fill="#b8bb85" stroke="#777e50"/><ellipse cy="-6" rx="7" ry="4" fill="#626b48"/>`,
+ lid:`<ellipse rx="23" ry="20" fill="#56604f" stroke="#a0a58e" stroke-width="1.2"/><ellipse cy="-2" rx="6" ry="4" fill="#b1ac91"/>`
+};
+const toolNames={chaire:"茶入",shifuku:"仕覆",chasen:"茶筅",chashaku:"茶杓",chakin:"茶巾",fukusa:"使い帛紗",kensui:"建水",hishaku:"柄杓",futaoki:"蓋置",lid:"釜の蓋"};
+const toolEls={};
+function drawTools(){
+ for(const [id,markup]of Object.entries(toolDrawings)){
+  const g=svg("g",{"data-tool":id,filter:"url(#smallShadow)"},$("koichaTools"));g.innerHTML=markup;
+  const label=svg("text",{x:0,y:id==="kensui"?43:38,class:"prop-label","text-anchor":"middle"},g);label.textContent=toolNames[id];toolEls[id]=g;
+ }
+ $("clothProp").innerHTML=`<path d="M-30 -23H30V23H-30Z" fill="#95684f" stroke="#c7a672" stroke-width="2"/><path d="M-27 -20L-7 0L-27 20M-6 -20L14 0L-6 20M15 -20L29 -6M15 20L29 6M-27 0L-7 -20M-27 0L-7 20M-6 0L14 -20M-6 0L14 20" fill="none" stroke="#c4aa75" stroke-width="1" opacity=".75"/><text x="0" y="45" text-anchor="middle" class="prop-label">出し帛紗</text>`;
+}
+function atProp(prop,scene,isCloth=false){
+ if(prop&&prop.owner){const p=scene.people[prop.owner];if(p)return {...prop,x:p.x+(p.a===90?40:0),y:p.y+(p.a===90?-4:-45)+(isCloth?22:0)};}
+ return prop;
+}
+function paintScene(scene){
+ if(!scene)return;
+ for(const p of PEOPLE){
+  const s=scene.people[p.id],e=els[p.id],target=toScene?toScene.people[p.id]:s;
+  e.g.setAttribute("transform",`translate(${s.x.toFixed(2)},${s.y.toFixed(2)})`);
+  e.figure.setAttribute("transform",`rotate(${s.a||0})`);
+  e.g.setAttribute("class",`svg-person pose-${target.pose||"idle"}${scene.active.includes(p.id)?" active":""}${focus===p.id?" focused":""}${focus&&focus!==p.id?" dimmed":""}`);
+  e.label.textContent=target.role;e.name.textContent=p.id==="E"?(course==="kagetsu"?"E · 本来の亭主":"E · 亭主"):p.id;
+  e.badge.setAttribute("class",`svg-badge${target.role==="月"?" moon":""}`);
+  e.g.setAttribute("aria-label",p.id+" "+target.role+" "+target.action);
+ }
+ $("portableTools").style.display=course==="kagetsu"&&scene.tools?"":"none";
+ $("koichaTools").style.display=course==="koicha"?"":"none";
+ $("mizusashi").style.display=course==="koicha"&&!scene.water?"none":"";
+ $("kamaLid").style.display=course==="koicha"&&!scene.kamaClosed?"none":"";
+ for(const [id,g]of Object.entries(toolEls)){
+  let p=scene.extras&&scene.extras[id];g.style.display=p&&p.visible?"":"none";
+  if(p){p=atProp(p,scene);g.setAttribute("transform",`translate(${p.x},${p.y})`);g.classList.toggle("tool-highlight",(scene.toolFocus||[]).includes(id));}
+ }
+ const box=scene.box;$("boxProp").style.display=box.visible?"":"none";$("boxProp").setAttribute("transform",`translate(${box.x},${box.y}) rotate(${box.angle||0})`);
+ let bowl=atProp(scene.bowl,scene);$("bowlProp").style.display=bowl.visible?"":"none";$("bowlProp").setAttribute("transform",`translate(${bowl.x},${bowl.y})`);
+ const liquid=bowl.liquid||(bowl.filled?"usucha":"empty");
+ $("teaSurface").setAttribute("fill",({water:"#b5c8ba",koicha:"#4b6229",usucha:"#799448",powder:"#6b7e38",empty:"#cac6ad"})[liquid]||"#cac6ad");
+ $("teaFoam").setAttribute("opacity",liquid==="usucha"?".65":"0");
+ text("bowlLabel",liquid==="koicha"?"濃茶":liquid==="powder"?"茶":liquid==="water"?"茶碗・湯／水":"茶碗");
+ let cloth=scene.cloth?atProp(scene.cloth,scene,true):null;$("clothProp").style.display=cloth&&cloth.visible?"":"none";
+ if(cloth)$("clothProp").setAttribute("transform",`translate(${cloth.x},${cloth.y})`);
+}
+const lerp=(a,b,t)=>a+(b-a)*t;
+const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+function pointOnPath(points,t){
+ if(points.length<2)return points[0];let lengths=[],sum=0;
+ for(let i=1;i<points.length;i++){const n=Math.hypot(points[i].x-points[i-1].x,points[i].y-points[i-1].y);lengths.push(n);sum+=n;}
+ if(sum===0)return points[points.length-1];let distance=t*sum;
+ for(let i=0;i<lengths.length;i++){if(distance<=lengths[i]||i===lengths.length-1){const q=lengths[i]?distance/lengths[i]:1;return{x:lerp(points[i].x,points[i+1].x,q),y:lerp(points[i].y,points[i+1].y,q)};}distance-=lengths[i];}
+ return points[points.length-1];
+}
+function mixProp(a,b,t){if(!a)return clone(b);if(!b)return clone(a);const r={...b,x:lerp(a.x,b.x,t),y:lerp(a.y,b.y,t)};if(a.owner!==b.owner&&t<1)r.owner=null;return r;}
+function interpolateScene(a,b,t){
+ if(t>=1)return clone(b);
+ const s=clone(b);
+ IDS.forEach(id=>{let p;if(activePaths[id])p=pointOnPath(activePaths[id],t);else p={x:lerp(a.people[id].x,b.people[id].x,t),y:lerp(a.people[id].y,b.people[id].y,t)};
+  s.people[id]={...b.people[id],...p,a:lerp(a.people[id].a||0,b.people[id].a||0,t)};
+ });
+ s.bowl=mixProp(a.bowl,b.bowl,t);s.box=mixProp(a.box,b.box,t);
+ if(b.cloth)s.cloth=mixProp(a.cloth,b.cloth,t);
+ if(b.extras){s.extras={};for(const[id,p]of Object.entries(b.extras))s.extras[id]=mixProp(a.extras&&a.extras[id],p,t);}
+ return s;
+}
+function drawRoutes(){
+ $("routes").replaceChildren();
+ for(const [id,path]of Object.entries(activePaths)){
+  const color=PEOPLE.find(p=>p.id===id).color;
+  svg("polyline",{points:path.map(p=>p.x+","+p.y).join(" "),class:"route-line",stroke:color},$("routes"));
+  const end=path[path.length-1];svg("circle",{cx:end.x,cy:end.y,r:5,fill:color,class:"route-end"},$("routes"));
+ }
+ $("routes").style.display=$("showPaths").checked?"":"none";
+}
+function updatePeoplePanel(){
+ if(!toScene)return;
+ for(const p of PEOPLE){
+  const s=toScene.people[p.id],row=els[p.id].row;
+  row.classList.toggle("active",toScene.active.includes(p.id));row.classList.toggle("focused",focus===p.id);row.setAttribute("aria-pressed",focus===p.id?"true":"false");
+  row.querySelector("strong").textContent=course==="koicha"?s.role:(p.id==="E"?"本来の亭主":"初座の"+["正客","次客","三客","四客"][IDS.indexOf(p.id)]);
+  row.querySelector(".person-detail span").textContent=s.action;
+  const role=row.querySelector(".person-role");role.textContent=s.role;role.className="person-role"+(s.role.includes("花")?" flower":s.role==="月"?" moon":"");
+ }
+ text("focusNote",focus?focus+"を追跡中。もう一度選ぶと全員表示に戻ります。":course==="koicha"?"濃茶では役は固定。Eが亭主、A〜Dが客です。":"A〜Eは人物の名前です。座や役が替わっても変わりません。");
+}
+function updateFlowFocus(){
+ document.querySelectorAll(".flow-item").forEach((e,i)=>{const relevant=!focus||steps[i].scene.active.includes(focus);e.style.opacity=relevant?"1":".4";e.classList.toggle("on",i===index);});
+}
+function showStepUI(){
+ const step=steps[index];
+ text("chapterName",(course==="koicha"?"濃茶":"花月")+" / "+chapters[step.scene.chapter]);
+ text("stepTitle",step.title);text("stepDesc",step.desc);text("stepCue",step.cue);
+ text("evidence",step.confidence==="official"?"大枠：公式資料":step.confidence==="record"?"説明：公開稽古記録":"表示：学習用の仮定");
+ $("evidence").className="evidence"+(step.confidence==="model"?" model":"");
+ text("captionTitle",step.captionTitle);text("captionText",step.caption);text("sceneBanner",step.title.length>27?step.title.slice(0,26)+"…":step.title);
+ $("scrubber").value=index;text("stepCount",String(index+1).padStart(2,"0")+" / "+steps.length);
+ $("prev").disabled=index===0;$("next").disabled=index===steps.length-1;
+ $("stepSource").replaceChildren();
+ if(step.refs.length){const pref=document.createElement("span");pref.textContent="説明の参照：";$("stepSource").appendChild(pref);}
+ step.refs.forEach((key,i)=>{const s=SOURCES[key];if(!s)return;const a=document.createElement("a");a.textContent=s.label;a.href=s.url;a.target="_blank";a.rel="noopener noreferrer";$("stepSource").appendChild(a);if(i<step.refs.length-1)$("stepSource").appendChild(document.createTextNode(" ／ "));});
+ const note=document.createElement("div");note.textContent="人物・道具の位置と動線は、全場面で模式です。";$("stepSource").appendChild(note);
+ $("stepUnderstood").checked=!!stored.done[step.id];$("memo").value=stored.notes[step.id]||"";
+ text("noteStep","場面 "+(index+1));
+ const n=steps.filter(s=>stored.done[s.id]).length;text("learnedCount",n+" / "+steps.length+" 場面を復習");$("learnedBar").style.width=(n/steps.length*100)+"%";
+ document.querySelectorAll(".chapter").forEach((b,i)=>{b.classList.toggle("current",i===step.scene.chapter);b.classList.toggle("done",i<step.scene.chapter);if(i===step.scene.chapter)b.setAttribute("aria-current","step");else b.removeAttribute("aria-current");});
+ document.querySelectorAll("#roundTable tr").forEach((tr,i)=>tr.classList.toggle("row-current",course==="kagetsu"&&step.scene.round===i+1));
+ updatePeoplePanel();updateFlowFocus();
+}
+function go(target,animate=true){
+ if(!Number.isFinite(target))return;
+ target=Math.max(0,Math.min(steps.length-1,Math.trunc(target)));
+ const old=index;index=target;fromScene=renderScene?clone(renderScene):clone(steps[index].scene);toScene=clone(steps[index].scene);
+ activePaths={};
+ if(animate&&target===old+1)for(const[id,path]of Object.entries(steps[index].moves))activePaths[id]=[{x:fromScene.people[id].x,y:fromScene.people[id].y},...path];
+ elapsed=0;moveElapsed=0;moveDuration=reducedMotion||!animate?0:Math.min(1550,steps[index].duration*.55);
+ animating=moveDuration>0;renderScene=moveDuration?clone(fromScene):clone(toScene);
+ if(!animating)paintScene(renderScene);
+ drawRoutes();showStepUI();persist();
+}
+function setPlaying(value){
+ playing=!!value;text("play",playing?"Ⅱ 一時停止":"▶ 再生");$("play").setAttribute("aria-pressed",playing?"true":"false");
+ document.body.classList.toggle("paused",!playing);
+ if(!playing)animating=false;else if(moveElapsed<moveDuration)animating=true;
+}
+function playToggle(){
+ if(playing){setPlaying(false);return;}
+ if(index===steps.length-1)go(0,false);
+ setPlaying(true);
+}
+function frame(ts){
+ const dt=lastFrame?Math.min(100,ts-lastFrame):0;lastFrame=ts;
+ if(animating){
+  moveElapsed=Math.min(moveDuration,moveElapsed+dt*rate);
+  const t=moveDuration?ease(moveElapsed/moveDuration):1;
+  renderScene=interpolateScene(fromScene,toScene,t);paintScene(renderScene);
+  if(moveElapsed>=moveDuration)animating=false;
+ }
+ if(playing){
+  elapsed+=dt*rate;
+  if(elapsed>=steps[index].duration){
+   if(index===steps.length-1){setPlaying(false);toast("一巡の復習が終わりました。");}
+   else go(index+1,true);
+  }
+ }
+ requestAnimationFrame(frame);
+}
+function idBadge(id){const p=PEOPLE.find(p=>p.id===id);return `<span class="tiny-id" style="background:${p.color}">${id}</span>`;}
+function buildTables(){
+ const wrap=$("chapters");wrap.replaceChildren();
+ chapters.forEach((name,i)=>{const b=document.createElement("button");b.className="chapter";const first=steps.findIndex(s=>s.scene.chapter===i);b.innerHTML=`<small>${String(i+1).padStart(2,"0")}</small>${escapeHTML(name)}`;b.addEventListener("click",()=>{setPlaying(false);go(first,false);});wrap.appendChild(b);});
+ const count=steps.reduce((s,x)=>s+x.duration,0)/1000;
+ text("durationNote",steps.length+"場面 · 自動再生 約"+Math.round(count/60)+"分（標準）");
+ const title=document.querySelector(".chapter-card h2"),desc=document.querySelector(".chapter-description"),head=document.querySelector(".track-table thead");
+ if(course==="kagetsu"){
+  title.textContent="始まりから、五服、終わりまで";desc.textContent="配役は記憶用の固定例です。全員が一服ずつ飲み、一回ずつ点てる決まりではありません。";
+  head.innerHTML="<tr><th>服</th><th>点てる人</th><th>いただく人</th><th>次の花</th></tr>";
+  $("roundTable").innerHTML=SCENARIOS[scenario].flowers.map((id,i)=>`<tr><td>${["一","二","三","四","五"][i]}服目</td><td>${idBadge(id)}</td><td>${idBadge(SCENARIOS[scenario].drinkers[i])}</td><td>${i<4?idBadge(SCENARIOS[scenario].flowers[i+1]):"仕舞いへ"}</td></tr>`).join("");
+ }else{
+  title.textContent="濃茶の一巡を、十の章で";desc.textContent="今回は炉・棚なし・亭主1人＋客4人の学習例。中蓋と中仕舞い、二種類の拝見を区別します。";
+  head.innerHTML="<tr><th>人物</th><th>役</th><th colspan='2'>この一巡で注目すること</th></tr>";
+  $("roundTable").innerHTML=PEOPLE.map((p,i)=>`<tr><td>${idBadge(p.id)}</td><td>${i===4?"亭主":["正客","次客","三客","末客"][i]}</td><td colspan="2">${["受取・問答・拝見物の返却","喫茶と拝見を次へつなぐ","前後の客と進行をそろえる","飲み終わり・正客への返却","清め・練り・中仕舞い・納め"][i]}</td></tr>`).join("");
+ }
+ $("scenario").disabled=course==="koicha";$("scenario").style.opacity=course==="koicha"?".4":"1";$("scenario").value=scenario;
+ $("flowList").replaceChildren();
+ steps.forEach((s,i)=>{const b=document.createElement("button");b.className="flow-item";b.dataset.step=i;b.innerHTML=`<span>${String(i+1).padStart(2,"0")}</span><b>${escapeHTML(s.title)}</b><small>${s.confidence==="model"?"模式":"資料あり"}</small>`;b.addEventListener("click",()=>{setPlaying(false);go(i,false);});$("flowList").appendChild(b);});
+}
+const QUIZ={
+ kagetsu:[
+ ["花の役は？",["この一服を飲む","点前をする","常に最初の正客"],1,"人物名A〜Eと、花・月という役を分けます。"],
+ ["月の役は？",["この一服をいただく","次の点前をする","道具を準備する亭主"],0,"月は喫茶の役。花の役と区別します。"],
+ ["初回の札取りの目安は？",["亭主が仮座に着いたとき","全員が飲み終えたとき","五服目の終了時"],0,"公開稽古記録では、亭主が仮座に着くときが目安です。"],
+ ["次からの札取りの目安は？",["全員が退出したとき","点前の人が茶杓を取るとき","茶碗を洗い終えたとき"],1,"最初の札取りと分けて覚えます。"],
+ ["五服目の茶碗返却の目安は？",["必ずすぐ返す","折据が正客側へ戻ったとき","次の六服目が出たとき"],1,"通常の返却と、終盤の返却を区別します。"],
+ ["総礼の後、座戻りで思い出すのは？",["最初に入ったときの座","いまの茶碗の色","抽選を引き直すこと"],0,"初座の人物と場所を記憶しておきます。"],
+ ["この画面で再現していないものは？",["人物A〜Eの状態","五服の一つの配役例","松・替札・箱の全分岐と正式な足運び"],2,"仮の動線や札の移動を、正式な所作として暗記しないでください。"],
+ ["濃茶モードと混同しないために",["花月では役と座が交代する","花月でもEだけが点て続ける","すべて同じ道具で同じ進行"],0,"二つは別の学習モードです。"]
+ ],
+ koicha:[
+ ["今回の濃茶で、亭主は？",["毎回札で替わる","Eが最後まで亭主","茶碗を持つ人"],1,"花月と違い、濃茶モードの役は固定です。"],
+ ["茶碗に添えて客へ出す帛紗は？",["出し帛紗","使い帛紗","折据"],0,"使い帛紗と出し帛紗を区別します。"],
+ ["中蓋を独立表示したのはどの段階？",["退出のあと","三器の拝見の最中","茶筅通しの湯を入れたあと"],2,"後で出てくる中仕舞いとは別の区切りです。"],
+ ["中仕舞いを表示するのは？",["客が濃茶をいただく間","客が入る前の掃除","五服目の札を引くとき"],0,"釜などをいったん納め、客の進行に心を向けます。"],
+ ["中仕舞いを解く目安として参照したのは？",["初花の移動","末客の飲み終わり","最初の茶杓"],1,"亭主の手順と、客の進行がつながるところです。"],
+ ["三器に含まれるのは？",["茶入・茶杓・仕覆","茶碗・茶筅・建水","折据・花札・月札"],0,"前にある茶碗・出し帛紗の拝見と区別します。"],
+ ["濃茶の茶を仕上げる動作は？",["札を振る","濃茶を練る","炭を並べる"],1,"この画面は力加減や湯量の実技指導ではありません。"],
+ ["この教材の終了について正しいのは？",["茶事全体が必ず濃茶で終わる","花月の六服目が続く","濃茶だけの稽古の区切り"],2,"正式な茶事では濃茶の後に後炭・薄茶へ続く構成があります。"],
+ ["図の道具の距離や足運びは？",["学習用の模式であり、先生との照合が必要","すべて公式教本の実寸","裏千家の配置をそのまま使用"],0,"図の動線・位置は全場面で模式です。"]
+ ]
+};
+function showQuiz(){
+ const q=QUIZ[course][quizIndex%QUIZ[course].length];quizLocked=false;text("quizPrompt",q[0]);text("quizFeedback","");
+ text("quizScore",quizCorrect+" / "+quizAnswered+" 正解");
+ $("quizChoices").replaceChildren();
+ q[1].forEach((label,i)=>{const b=document.createElement("button");b.textContent=label;b.addEventListener("click",()=>{
+  if(quizLocked)return;quizLocked=true;quizAnswered++;if(i===q[2])quizCorrect++;
+  Array.from($("quizChoices").children).forEach((el,j)=>{el.disabled=true;el.classList.toggle("correct",j===q[2]);if(i===j&&i!==q[2])el.classList.add("wrong");});
+  text("quizFeedback",(i===q[2]?"正解。":"確認しましょう。")+q[3]);text("quizScore",quizCorrect+" / "+quizAnswered+" 正解");
+ });$("quizChoices").appendChild(b);});
+}
+function setCourse(name,restore=false){
+ setPlaying(false);course=name;steps=course==="koicha"?buildKoicha():buildStory(scenario);
+ chapters=course==="koicha"?KOICHA_CHAPTERS:KAGETSU_CHAPTERS;index=0;renderScene=null;toScene=null;fromScene=null;activePaths={};
+ $("scrubber").max=steps.length-1;
+ $("courseKagetsu").classList.toggle("selected",name==="kagetsu");$("courseKoicha").classList.toggle("selected",name==="koicha");
+ $("courseKagetsu").setAttribute("aria-pressed",name==="kagetsu"?"true":"false");$("courseKoicha").setAttribute("aria-pressed",name==="koicha"?"true":"false");
+ text("noticeText",course==="koicha"?"炉・運びを想定した復習用です。説明の根拠は各場面に表示。手の左右・足運び・道具配置は未再現です。":"五服の流れは公開稽古記録を参照。動線・配役は学習用の仮定で、松・替札・箱の分岐は未再現です。");
+ text("propHint",course==="koicha"?"茶碗・道具の授受は模式表示。":"*折据の移動は注目先。回し順は省略。");
+ text("scrollText",course==="koicha"?"一 座":"花 月");
+ text("roomTitle",course==="koicha"?"表千家の濃茶を学ぶ茶室模式図":"表千家の花月を学ぶ茶室模式図");
+ $("legend").innerHTML=course==="koicha"?'<span><i class="dot flower"></i>E＝亭主</span><span><i class="dot moon"></i>A〜D＝客</span><span><i class="dot"></i>位置・動線は模式</span>':'<span><i class="dot flower"></i>花＝点てる役</span><span><i class="dot moon"></i>月＝飲む役</span><span><i class="dot"></i>破線＝仮の動線</span>';
+ const v=document.querySelector('[data-seat="V"]');if(v)v.style.display=course==="koicha"?"none":"";
+ buildTables();quizIndex=0;showQuiz();
+ const saved=stored.last[course+"-"+scenario];go(restore&&Number.isInteger(saved)?saved:0,false);
+ try{history.replaceState(null,"","#"+course);}catch(e){}
+}
+$("courseKagetsu").addEventListener("click",()=>setCourse("kagetsu",true));
+$("courseKoicha").addEventListener("click",()=>setCourse("koicha",true));
+$("play").addEventListener("click",playToggle);
+$("next").addEventListener("click",()=>{setPlaying(false);go(index+1,true);});
+$("prev").addEventListener("click",()=>{setPlaying(false);go(index-1,false);});
+$("restart").addEventListener("click",()=>{setPlaying(false);go(0,false);});
+$("scrubber").addEventListener("input",e=>{setPlaying(false);go(Number(e.target.value),false);});
+$("speed").addEventListener("change",e=>rate=Math.max(.25,Math.min(5,Number(e.target.value)||1)));
+$("showPaths").addEventListener("change",()=>$("routes").style.display=$("showPaths").checked?"":"none");
+$("zoom").addEventListener("click",()=>{const on=$("viewbox").classList.toggle("zoomed");$("zoom").setAttribute("aria-pressed",on?"true":"false");text("zoom",on?"縮小":"拡大");});
+$("fullscreen").addEventListener("click",async()=>{
+ try{if(document.fullscreenElement)await document.exitFullscreen();else if($("stageCard").requestFullscreen)await $("stageCard").requestFullscreen();else throw Error("unsupported");}
+ catch(e){$("viewbox").classList.toggle("zoomed");toast("この端末では全画面の代わりに拡大表示を使います。");}
+});
+$("showSources").addEventListener("click",()=>{$("sourceDetails").open=true;$("sourceDetails").scrollIntoView({behavior:reducedMotion?"auto":"smooth",block:"start"});});
+$("showHelp").addEventListener("click",()=>{setPlaying(false);if($("helpDialog").showModal)$("helpDialog").showModal();else $("helpDialog").setAttribute("open","");});
+$("closeHelp").addEventListener("click",()=>{$("helpDialog").close?$("helpDialog").close():$("helpDialog").removeAttribute("open");});
+$("scenario").addEventListener("change",e=>{scenario=SCENARIOS[e.target.value]?e.target.value:"standard";setCourse("kagetsu",false);});
+$("stepUnderstood").addEventListener("change",e=>{stored.done[steps[index].id]=e.target.checked;persist();showStepUI();});
+$("memo").maxLength=6000;
+$("memo").addEventListener("input",e=>{stored.notes[steps[index].id]=e.target.value.slice(0,6000);persist();});
+$("quizNext").addEventListener("click",()=>{quizIndex++;showQuiz();});
+$("print").addEventListener("click",()=>{setPlaying(false);window.print();});
+$("exportNotes").addEventListener("click",()=>{
+ persist();const blob=new Blob([JSON.stringify(stored,null,2)],{type:"application/json;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");
+ a.href=url;a.download="表千家_稽古メモ.json";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);
+});
+$("importNotes").addEventListener("click",()=>$("importFile").click());
+$("importFile").addEventListener("change",async e=>{
+ const file=e.target.files&&e.target.files[0];if(!file)return;
+ try{
+  if(file.size>3000000)throw Error("ファイルが大きすぎます。");
+  const v=JSON.parse(await file.text());if(!v||v.version!==2||typeof v.notes!=="object"||Array.isArray(v.notes))throw Error("このアプリのメモファイルではありません。");
+  for(const[k,val]of Object.entries(v.notes)){if(/^(standard|hostLast|koicha)-\d{1,3}$/.test(k)&&typeof val==="string")stored.notes[k]=val.slice(0,6000);}
+  if(v.done&&typeof v.done==="object")for(const[k,val]of Object.entries(v.done))if(/^(standard|hostLast|koicha)-\d{1,3}$/.test(k)&&typeof val==="boolean")stored.done[k]=val;
+  persist();showStepUI();toast("メモと復習チェックを読み込みました。");
+ }catch(err){toast("読み込めませんでした："+err.message);}
+ e.target.value="";
+});
+document.addEventListener("keydown",e=>{
+ const tag=e.target.tagName;if(["TEXTAREA","INPUT","SELECT"].includes(tag)||$("helpDialog").open)return;
+ if(e.key===" "){if(tag==="BUTTON")return;e.preventDefault();playToggle();}
+ else if(e.key==="ArrowRight"){e.preventDefault();setPlaying(false);go(index+1,true);}
+ else if(e.key==="ArrowLeft"){e.preventDefault();setPlaying(false);go(index-1,false);}
+ else if(e.key==="Home"){e.preventDefault();setPlaying(false);go(0,false);}
+ else if(e.key==="End"){e.preventDefault();setPlaying(false);go(steps.length-1,false);}
+});
+document.addEventListener("visibilitychange",()=>{if(document.hidden)setPlaying(false);});
+document.querySelector(".stage-head").after(document.querySelector(".controls"));
+drawMats();drawPeople();drawTools();setCourse(course,true);requestAnimationFrame(frame);
+// Test hook exposes only deterministic, local application state.
+window.teaStudy={
+ getState:()=>({course,scenario,index,count:steps.length,playing,focus,title:steps[index].title,scene:clone(toScene),renderScene:clone(renderScene)}),
+ go:i=>{setPlaying(false);go(i,false);},
+ setCourse:name=>{if(["kagetsu","koicha"].includes(name))setCourse(name,false);},
+ listSteps:()=>steps.map((s,i)=>({i,title:s.title,chapter:s.scene.chapter,confidence:s.confidence})),
+ validate:()=>{const all=[...buildStory("standard"),...buildStory("hostLast"),...buildKoicha()];return all.every(s=>IDS.every(id=>Number.isFinite(s.scene.people[id].x)&&Number.isFinite(s.scene.people[id].y)));},
+ getBuildInfo:()=>({version:2,offline:true})
+};
+
+</script>
+</body>
+</html>
